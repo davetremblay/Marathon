@@ -2,7 +2,9 @@
 Marathon is a program to automatically create a 50% microrhythm between two
 rhythmic patterns in MIDI.
 
-Maraton takes a MIDI file by the name "marathon_in.mid" located in the same 
+For more information about microrhythms, follow the link https://wp.me/p3mIfa-off
+
+Maraton takes a MIDI file by the name "marathon_in.mid" located in the same
 folder as itself containing two MIDI tracks of same length and number of notes.
 Marathon then creates the file "marathon_out.mid" by calculating the average
 duration of each note pair in the two tracks and copying the channel, velocity,
