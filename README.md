@@ -22,7 +22,7 @@ the rhythmic pattern placed by default on C4 (note 60).
 You need to install [python-midi](python-midi). Then, just type 
 
 ```console
-$ python Marathon.py`
+$ python Marathon.py
 ```
 
 in a terminal, and enjoy the program.
