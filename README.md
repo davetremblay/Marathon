@@ -1,4 +1,4 @@
-=Marathon=
+# Marathon
 
 Marathon is a program to automatically create a 50% microrhythm between two
 rhythmic patterns in MIDI.
@@ -17,19 +17,27 @@ rhythmic classes (like Swing Feel, Gnawa Triplet, or Brazilian 16ths), and
 apply a morph value of your desire to create a microrhythm. For this feature  the program will output a file by the name "marathon_out.mid" that contains
 the rhythmic pattern placed by default on C4 (note 60).
 
-==Installation==
+## Installation
 
-You need to install [https://github.com/vishnubob/python-midi python-midi]. Then, just write <pre>python Marathon.py</pre> and enjoy the program.
+You need to install [python-midi](python-midi). Then, just type 
 
-==Example Usage==
+```console
+$ python Marathon.py`
+```
 
-===Creating a 3:2 Quintuplet Feel Swing===
+in a terminal, and enjoy the program.
 
-<pre>
-#Starting the program
-python Marathon.py
+## Example Usage
 
-#The program will ask you for a preset
+### Creating a 3:2 Quintuplet Feel Swing
+
+Starting the program:
+```console
+$ python Marathon.py
+```
+
+The program will ask you for a preset:
+```console
 Choose preset
 
 1: Custom File
@@ -43,8 +51,10 @@ Choose preset
 
 Enter number:
 3
+```
 
-#Then for a morph value
+Then for a morph value:
+```console
 Enter morph value (0-100)
 
 Examples
@@ -58,29 +68,24 @@ Examples
 
 Enter number:
 40
+```
 
-#And finally how many repetitions you need
+And finally how many repetitions you need:
+```console
 How many repetitions do you want?:
 32
-</pre>
+```
 
-You will then find the file "marathon_out.mid" in the same directory, which you can freely import in a digital audio workstation (DAW) and do as you wish.
+You will then find the file `marathon_out.mid` in the same directory, which you can freely import in a digital audio workstation (DAW) and do as you wish.
 
-Known issues:
+## Known issues
+* Does not work properly with chords and multiple voices on one track.
+* May behave unexpectedly with time signatures or tempo changes and other more complex actions.
 
-    —Does not work properly with chords and multiple voices on one track.
-    —May behave unexpectedly with time signatures or tempo changes and other
-        more complex actions.
+## Suggestions
+* Create simple MIDI files with a DAW to feed the program.
+* Create monophonic tracks. If you want multiphonic results, I suggest you create a MIDI file for each voice. Remember to write the same number of notes in each track if you want similar results. You can then manually recombine the different output files into one track on a DAW.
+* Tempo or time signature change, note bends, and other more complex actions are to be avoided for better results. You can apply those changes manually on the output track.
 
-Suggestions:
-
-    —Create simple MIDI files with a DAW to feed the program.
-    —Create monophonic tracks. If you want multiphonic results, I suggest you
-        create a MIDI file for each voice. Remember to write the same number of
-        notes in each track if you want similar results. You can then manually
-        recombine the different output files into one track on a DAW.
-    —Tempo or time signature change, note bends, and other more complex actions
-        are to be avoided for better results. You can apply those changes
-        manually on the output track.
-
+## Author
 Dave Tremblay
