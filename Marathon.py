@@ -513,44 +513,48 @@ def Marathon(preset):
         tra.append(trackend)
         midi.write_midifile(file_out, pat)
         
-preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n\nEnter number: ")
+def main():
+    preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n\nEnter number: ")
 
-if str(preset) == "1":
-    filename = input("Enter file (See Readme for instructions): ")
-    morph = input("Enter morph value (0-100): ")
-    repeats = input("How many repetitions do you want?: ")
-    file = open(filename)
-    Marathon(preset)
-elif str(preset) == "2":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "3":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "4":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:1 16ths Gallop\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "5":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:2 Quintuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)    
-elif str(preset) == "6":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1 Straight 16th Notes\n50: Halfway Morph\n100: 2:1:1:2 Sixtuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)   
-elif str(preset) == "7":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1:1 Straight Quintuplets\n50: Halfway Morph\n100: 2:1:1:2:1 Septuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)        
-elif str(preset) == "8":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Quarter Notes\n50: Halfway Morph\n65: Recommended Morph\n100: 3:5:4 16ths Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)        
+    if str(preset) == "1":
+        filename = input("Enter file (See Readme for instructions): ")
+        morph = input("Enter morph value (0-100): ")
+        repeats = input("How many repetitions do you want?: ")
+        file = open(filename)
+        Marathon(preset)
+    elif str(preset) == "2":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "3":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "4":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:1 16ths Gallop\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "5":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:2 Quintuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)    
+    elif str(preset) == "6":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1 Straight 16th Notes\n50: Halfway Morph\n100: 2:1:1:2 Sixtuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)   
+    elif str(preset) == "7":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1:1 Straight Quintuplets\n50: Halfway Morph\n100: 2:1:1:2:1 Septuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)        
+    elif str(preset) == "8":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Quarter Notes\n50: Halfway Morph\n65: Recommended Morph\n100: 3:5:4 16ths Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)        
 
 
+# Execute the main program if this file is not being imported as a module
+if __name__ == "__main__":
+    main()
 
      
     
