@@ -1,10 +1,11 @@
-# Marathon
+=Marathon=
+
 Marathon is a program to automatically create a 50% microrhythm between two
 rhythmic patterns in MIDI.
 
 For more information about microrhythms, follow the link https://wp.me/p3mIfa-off
 
-Maraton takes a MIDI file by the name "marathon_in.mid" located in the same
+Marathon takes a MIDI file by the name "marathon_in.mid" located in the same
 folder as itself containing two MIDI tracks of same length and number of notes.
 Marathon then creates the file "marathon_out.mid" by calculating the average
 duration of each note pair in the two tracks and copying the channel, velocity,
@@ -15,6 +16,55 @@ without having to feed it a MIDI file. You can select from 6 different
 rhythmic classes (like Swing Feel, Gnawa Triplet, or Brazilian 16ths), and
 apply a morph value of your desire to create a microrhythm. For this feature  the program will output a file by the name "marathon_out.mid" that contains
 the rhythmic pattern placed by default on C4 (note 60).
+
+==Installation==
+
+You need to install [https://github.com/vishnubob/python-midi python-midi]. Then, just write <pre>python Marathon.py</pre> and enjoy the program.
+
+==Example Usage==
+
+===Creating a 3:2 Quintuplet Feel Swing===
+
+<pre>
+#Starting the program
+python Marathon.py
+
+#The program will ask you for a preset
+<!-- Choose preset
+
+1: Custom File
+2: Swing
+3: Half-Swing
+4: West African Triplet
+5: Gnawa Triplet
+6: Brazilian 16ths
+7: Braff's Quintuplet
+8: Viennese Waltz
+
+Enter number:  -->
+3
+
+#Then for a morph value
+<!-- Enter morph value (0-100)
+
+Examples
+0: 1:1 Straight Quarter Notes
+29: ~4:3 Septuplet Feel
+40: 3:2 Quintuplet Feel
+50: 5:3 Eighth Feel
+66.7: 2:1 Triplet Feel
+85.7: ~5:2 Septuplet Feel
+100: 3:1 Hard Swing
+
+Enter number: -->
+40
+
+#And finally how many repetitions you need
+<!-- How many repetitions do you want?:  -->
+32
+</pre>
+
+You will then find the file "marathon_out.mid" in the same directory, which you can freely import in a digital audio workstation (DAW) and do as you wish.
 
 Known issues:
 
