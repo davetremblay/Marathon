@@ -10,6 +10,12 @@ Marathon then creates the file "marathon_out.mid" by calculating the average
 duration of each note pair in the two tracks and copying the channel, velocity,
 and pitch pattern of the first track.
 
+As of February 26, 2019, Marathon can also generate microrhythms for you,
+without having to feed it a MIDI file. You can select from 6 different
+rhythmic classes (like Swing Feel, Gnawa Triplet, or Brazilian 16ths), and
+apply a morph value of your desire to create a microrhythm. For this feature  the program will output a file by the name "marathon_out.mid" that contains
+the rhythmic pattern placed by default on C4 (note 60).
+
 Known issues:
 
     —Does not work properly with chords and multiple voices on one track.
