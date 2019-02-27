@@ -30,7 +30,7 @@ You need to install [https://github.com/vishnubob/python-midi python-midi]. Then
 python Marathon.py
 
 #The program will ask you for a preset
-<!-- Choose preset
+Choose preset
 
 1: Custom File
 2: Swing
@@ -41,11 +41,11 @@ python Marathon.py
 7: Braff's Quintuplet
 8: Viennese Waltz
 
-Enter number:  -->
+Enter number:
 3
 
 #Then for a morph value
-<!-- Enter morph value (0-100)
+Enter morph value (0-100)
 
 Examples
 0: 1:1 Straight Quarter Notes
@@ -56,11 +56,11 @@ Examples
 85.7: ~5:2 Septuplet Feel
 100: 3:1 Hard Swing
 
-Enter number: -->
+Enter number:
 40
 
 #And finally how many repetitions you need
-<!-- How many repetitions do you want?:  -->
+How many repetitions do you want?:
 32
 </pre>
 
