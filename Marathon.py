@@ -112,6 +112,7 @@ def Marathon(preset):
         
         else:
             print("Error: The number of notes in the two tracks is different.")
+            quit()
             
     #Swing
     elif str(preset) == "2":
@@ -512,7 +513,143 @@ def Marathon(preset):
         tra.append(trackend)
         midi.write_midifile(file_out, pat)
         
-preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n\nEnter number: ")
+    #Text Command
+    elif str(preset) == "99":
+
+        file_out = "marathon_out.mid"
+        
+        note_length = {
+                "w": 3840,
+                "h": 1920,
+                "q": 960,
+                "e": 480,
+                "s": 240,
+                "t": 120
+                }
+        
+        note_list1 = str(comm1).split(" ")
+        note_list2 = str(comm2).split(" ")
+        
+        notes1 = []
+        notes2 = []
+        
+        #notes
+        for note in note_list1:
+            notes1.append(int(0))
+            notes1.append(int(note_length[str(note)[0]]))
+        for note in note_list2:
+            notes2.append(int(0))
+            notes2.append(int(note_length[str(note)[0]]))
+
+        #dots
+        pos = 1        
+        for note in note_list1:
+            if len(str(note)) == 2:
+                if str(note)[1] == ".":
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/2)
+            if len(str(note)) == 3:
+                if str(note)[2] == ".":
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/2)
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/6)
+            if len(str(note)) == 4:
+                if str(note)[3] == ".":
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/2)
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/6)
+                    notes1[pos*2-1] += int(notes1[pos*2-1]/14)
+            pos += 1
+        pos = 1        
+        for note in note_list2:
+            if len(str(note)) == 2:
+                if str(note)[1] == ".":
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/2)
+            if len(str(note)) == 3:
+                if str(note)[2] == ".":
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/2)
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/6)
+            if len(str(note)) == 4:
+                if str(note)[3] == ".":
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/2)
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/6)
+                    notes2[pos*2-1] += int(notes2[pos*2-1]/14)
+            pos += 1
+            
+        #tuplets
+        pos = 1
+        for note in note_list1:
+            if "/" in str(note):
+                nom = int(str(note)[1:len(note)].split("/")[0])
+                denom = int(str(note)[1:len(note)].split("/")[1])
+                notes1[pos*2-1] = int(notes1[pos*2-1]*(denom/nom))
+            pos += 1
+        pos = 1
+        for note in note_list2:
+            if "/" in str(note):
+                nom = int(str(note)[1:len(note)].split("/")[0])
+                denom = int(str(note)[1:len(note)].split("/")[1])
+                notes2[pos*2-1] = int(notes2[pos*2-1]*(denom/nom))
+            pos += 1
+            
+        #length equalization
+        T1 = 0
+        for note in notes1:
+            T1 += int(note)
+        T2 = 0
+        for note in notes2:
+            T2 += int(note)
+        ratio = T1/T2
+        pos = 0
+        for note in notes2:
+            notes2[pos] = int(note*ratio)
+            pos += 1
+        
+        fm = 1
+        rm = 960
+    
+        pat = midi.Pattern(format=int(fm), resolution=int(rm))
+        tra = midi.Track()
+        pat.append(tra)
+        
+        #pattern weight (must add up to 1.0)
+        w1 = 1-float(morph)/100
+        w2 = float(morph)/100
+        
+        #rounding correction
+        rc = 0
+        
+        for n in range(int(repeats)):
+            e = 0
+            for event in notes2:
+                tick1 = int(notes1[e])
+                tick2 = int(notes2[e])
+                
+                #rounding correction
+                rc += (w1 * tick1) + (w2 * tick2) - float(int(w1 * tick1) + (w2 * tick2))
+    
+                if rc % 1 < -0.5:
+                    tickm = int((w1 * tick1) + (w2 * tick2)) + int(rc) - 1
+                    rc = 0
+                elif rc % 1 >= 0.5:
+                    tickm = int((w1 * tick1) + (w2 * tick2)) + int(rc) + 1
+                    rc = 0
+                else:
+                    tickm = int((w1 * tick1) + (w2 * tick2)) + int(rc)
+                    rc = 0
+                
+                noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
+                tra.append(noteon)
+                noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
+                tra.append(noteoff)
+                            
+                e += 1
+                
+            else:
+                e += 1
+        
+        trackend = midi.EndOfTrackEvent(tick=1)
+        tra.append(trackend)
+        midi.write_midifile(file_out, pat)
+        
+preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n99: Text Command\n\nEnter number: ")
 
 if str(preset) == "1":
     filename = input("Enter file (See Readme for instructions): ")
@@ -548,7 +685,15 @@ elif str(preset) == "8":
     morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Quarter Notes\n50: Halfway Morph\n65: Recommended Morph\n100: 3:5:4 16ths Feel\n\nEnter number: ")
     repeats = input("How many repetitions do you want?: ")
     Marathon(preset)        
-
+elif str(preset) == "99":
+    comm1 = input("Enter text notation for track 1\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 1): ")
+    comm2 = input("Enter text notation for track 2\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 2): ")
+    if len(str(comm1).split(" ")) != len(str(comm2).split(" ")):
+        print("Error: The number of notes in the two tracks is different.")
+        raise SystemExit
+    morph = input("Enter morph value (0-100): ")
+    repeats = input("How many repetitions do you want?: ")
+    Marathon(preset) 
 
 
      

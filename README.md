@@ -5,8 +5,7 @@ rhythmic patterns in MIDI.
 
 For more information about microrhythms, follow the link https://wp.me/p3mIfa-off
 
-Marathon takes a MIDI file by the name "marathon_in.mid" located in the same
-folder as itself containing two MIDI tracks of same length and number of notes.
+Marathon takes a MIDI file by the name of your choice located in the same folder as itself containing two MIDI tracks of same length and number of notes.
 Marathon then creates the file "marathon_out.mid" by calculating the average
 duration of each note pair in the two tracks and copying the channel, velocity,
 and pitch pattern of the first track.
@@ -17,13 +16,20 @@ rhythmic classes (like Swing Feel, Gnawa Triplet, or Brazilian 16ths), and
 apply a morph value of your desire to create a microrhythm. For this feature  the program will output a file by the name "marathon_out.mid" that contains
 the rhythmic pattern placed by default on C4 (note 60).
 
+As of February 27, 2019, Marathon can also generate custom microrhythms without the need for MIDI input. You can select preset "99" and write your two rhythm tracks using text commands. Marathon accepts note length (from whole to thirty-second notes), dots (up to 3), and tuplet feel (Marathon is very flexible regarding tuplets, as they don't need to be whole to be accepted). The syntax is "ndx/y":
+- n is the note value
+- d is the place for dots
+- x/y is the tuplet space (it must be two integers separated by "/")
+- Each note must be separated by a space
+You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
+
 ==Installation==
 
 You need to install [https://github.com/vishnubob/python-midi python-midi]. Then, just write <pre>python Marathon.py</pre> and enjoy the program.
 
 ==Example Usage==
 
-===Creating a 3:2 Quintuplet Feel Swing===
+===Using Custom File===
 
 <pre>
 #Starting the program
@@ -40,11 +46,24 @@ Choose preset
 6: Brazilian 16ths
 7: Braff's Quintuplet
 8: Viennese Waltz
+99: Text Command
 
 Enter number:
-3
+1
 
-#Then for a morph value
+#The program will ask you for the file name
+Enter file (See Readme for instructions): marathon_in.mid
+
+#Marathon will then ask for morph value and repetitions
+Enter morph value (0-100): 50
+
+How many repetitions do you want?: 16
+</pre>
+
+===Creating a 3:2 Quintuplet Feel Swing===
+
+<pre>
+#After choosing "3", Marathon will directly ask for a morph value instead
 Enter morph value (0-100)
 
 Examples
@@ -58,10 +77,38 @@ Examples
 
 Enter number:
 40
+</pre>
 
-#And finally how many repetitions you need
-How many repetitions do you want?:
-32
+===Using Text Command===
+
+<pre>
+#Select preset "99" for Text Command and you will see the vocabulary
+Enter text notation for track 1
+
+Separate each note by a space
+
+Notes
+w: whole note
+h: half note
+q: quarter note
+e: eighth note
+s: sixteenth note
+t: thirty-second note
+
+Dots (after the note)
+.: dotted
+..: double dotted
+...: triple dotted
+
+Tuplets (after note and dots)
+x/y: where x-tuplet notes are to be played in y non-tuplet notes
+
+Enter text command (track 1):
+#Example Command
+(track 1): q q q q
+(track 2): q. e w.3/4 t11/10
+
+#Then Marathon will ask for a morph value and a number of repetitions
 </pre>
 
 You will then find the file "marathon_out.mid" in the same directory, which you can freely import in a digital audio workstation (DAW) and do as you wish.
@@ -74,6 +121,7 @@ Known issues:
 
 Suggestions:
 
+    -Use Text Command
     —Create simple MIDI files with a DAW to feed the program.
     —Create monophonic tracks. If you want multiphonic results, I suggest you
         create a MIDI file for each voice. Remember to write the same number of
