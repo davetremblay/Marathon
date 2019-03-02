@@ -20,12 +20,12 @@ As of February 27, 2019, Marathon can also generate custom microrhythms without 
 * n is the note value
 * d is the place for dots
 * x/y is the tuplet space (it must be two integers separated by "/")
-* Each note must be separated by a space
+* Each note must be separated by a space or dash ("-") for tied notes
 
 You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
 
 ## Installation
-You need to install [python-midi](python-midi). Then, just type 
+You need to install [python-midi](python-midi). Then, just type
 
 ```console
 $ python Marathon.py
@@ -120,7 +120,7 @@ For example:
 
 ```console
 (track 1): q q q q
-(track 2): q. e w.3/4 t11/10
+(track 2): q. e w.3/4 t11/10-s...5/3
 ```
 
 Then Marathon will ask for a morph value and a number of repetitions
