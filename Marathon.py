@@ -1,40 +1,41 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import midi
+
+"""
+Created on Sat Feb 23 08:03:51 2019
+
+Marathon is a program to automatically create a 50% microrhythm between two
+rhythmic patterns in MIDI.
+
+Maraton takes a MIDI file by the name "marathon_in.mid" located in the same 
+folder as itself containing two MIDI tracks of same length and number of notes.
+Marathon then creates the file "marathon_out.mid" by calculating the average
+duration of each note pair in the two tracks and copying the channel, velocity,
+and pitch pattern of the first track.
+
+Known issues:
+
+    —Does not work properly with chords and multiple voices on one track.
+    —May behave unexpectedly with time signatures or tempo changes and other
+        more complex actions.
+
+Suggestions:
+
+    —Create simple MIDI files with a DAW to feed the program.
+    —Create monophonic tracks. If you want multiphonic results, I suggest you
+        create a MIDI file for each voice. Remember to write the same number of
+        notes in each track if you want similar results. You can then manually
+        recombine the different output files into one track on a DAW.
+    —Tempo or time signature change, note bends, and other more complex actions
+        are to be avoided for better results. You can apply those changes
+        manually on the output track.
+
+@author: DaveTremblay
+"""
+
 def Marathon(preset):    
-    #!/usr/bin/env python3
-    # -*- coding: utf-8 -*-
-    """
-    Created on Sat Feb 23 08:03:51 2019
-    
-    Marathon is a program to automatically create a 50% microrhythm between two
-    rhythmic patterns in MIDI.
-    
-    Maraton takes a MIDI file by the name "marathon_in.mid" located in the same 
-    folder as itself containing two MIDI tracks of same length and number of notes.
-    Marathon then creates the file "marathon_out.mid" by calculating the average
-    duration of each note pair in the two tracks and copying the channel, velocity,
-    and pitch pattern of the first track.
-    
-    Known issues:
-    
-        —Does not work properly with chords and multiple voices on one track.
-        —May behave unexpectedly with time signatures or tempo changes and other
-            more complex actions.
-    
-    Suggestions:
-        
-        —Create simple MIDI files with a DAW to feed the program.
-        —Create monophonic tracks. If you want multiphonic results, I suggest you
-            create a MIDI file for each voice. Remember to write the same number of
-            notes in each track if you want similar results. You can then manually
-            recombine the different output files into one track on a DAW.
-        —Tempo or time signature change, note bends, and other more complex actions
-            are to be avoided for better results. You can apply those changes
-            manually on the output track.
-    
-    @author: DaveTremblay
-    """
-    
-    import midi
-    
     #Custom File
     if str(preset) == "1":
         file_in = filename
@@ -648,53 +649,59 @@ def Marathon(preset):
         trackend = midi.EndOfTrackEvent(tick=1)
         tra.append(trackend)
         midi.write_midifile(file_out, pat)
-        
-preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n99: Text Command\n\nEnter number: ")
 
-if str(preset) == "1":
-    filename = input("Enter file (See Readme for instructions): ")
-    morph = input("Enter morph value (0-100): ")
-    repeats = input("How many repetitions do you want?: ")
-    file = open(filename)
-    Marathon(preset)
-elif str(preset) == "2":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "3":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "4":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:1 16ths Gallop\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)
-elif str(preset) == "5":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:2 Quintuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)    
-elif str(preset) == "6":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1 Straight 16th Notes\n50: Halfway Morph\n100: 2:1:1:2 Sixtuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)   
-elif str(preset) == "7":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1:1 Straight Quintuplets\n50: Halfway Morph\n100: 2:1:1:2:1 Septuplet Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)        
-elif str(preset) == "8":
-    morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Quarter Notes\n50: Halfway Morph\n65: Recommended Morph\n100: 3:5:4 16ths Feel\n\nEnter number: ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset)        
-elif str(preset) == "99":
-    comm1 = input("Enter text notation for track 1\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 1): ")
-    comm2 = input("Enter text notation for track 2\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 2): ")
-    if len(str(comm1).split(" ")) != len(str(comm2).split(" ")):
-        print("Error: The number of notes in the two tracks is different.")
-        raise SystemExit
-    morph = input("Enter morph value (0-100): ")
-    repeats = input("How many repetitions do you want?: ")
-    Marathon(preset) 
 
+def main():
+    preset = input("Choose preset \n\n1: Custom File\n2: Swing\n3: Half-Swing\n4: West African Triplet\n5: Gnawa Triplet\n6: Brazilian 16ths\n7: Braff's Quintuplet\n8: Viennese Waltz\n\nEnter number: ")
+
+    if str(preset) == "1":
+        filename = input("Enter file (See Readme for instructions): ")
+        morph = input("Enter morph value (0-100): ")
+        repeats = input("How many repetitions do you want?: ")
+        file = open(filename)
+        Marathon(preset)
+    elif str(preset) == "2":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "3":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1 Straight Quarter Notes\n29: ~4:3 Septuplet Feel\n40: 3:2 Quintuplet Feel\n50: 5:3 Eighth Feel\n66.7: 2:1 Triplet Feel \n85.7: ~5:2 Septuplet Feel\n100: 3:1 Hard Swing\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "4":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:1 16ths Gallop\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)
+    elif str(preset) == "5":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Triplet Notes\n50: Halfway Morph\n100: 2:1:2 Quintuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)    
+    elif str(preset) == "6":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1 Straight 16th Notes\n50: Halfway Morph\n100: 2:1:1:2 Sixtuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)   
+    elif str(preset) == "7":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1:1:1 Straight Quintuplets\n50: Halfway Morph\n100: 2:1:1:2:1 Septuplet Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)        
+    elif str(preset) == "8":
+        morph = input("Enter morph value (0-100)\n\nExamples\n0: 1:1:1 Straight Quarter Notes\n50: Halfway Morph\n65: Recommended Morph\n100: 3:5:4 16ths Feel\n\nEnter number: ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset)        
+    elif str(preset) == "99":
+        comm1 = input("Enter text notation for track 1\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 1): ")
+        comm2 = input("Enter text notation for track 2\n\nSeparate each note by a space\n\nNotes\nw: whole note\nh: half note\nq: quarter note\ne: eighth note\ns: sixteenth note\nt: thirty-second note\n\nDots (after the note)\n.: dotted\n..: double dotted\n...: triple dotted\n\nTuplets (after note and dots)\nx/y: where x-tuplet notes are to be played in y non-tuplet notes\n\nEnter text command (track 2): ")
+        if len(str(comm1).split(" ")) != len(str(comm2).split(" ")):
+            print("Error: The number of notes in the two tracks is different.")
+            raise SystemExit
+        morph = input("Enter morph value (0-100): ")
+        repeats = input("How many repetitions do you want?: ")
+        Marathon(preset) 
+
+
+# Execute the main program if this file is not being imported as a module
+if __name__ == "__main__":
+    main()
 
      
     
