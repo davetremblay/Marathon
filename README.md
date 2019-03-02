@@ -116,11 +116,17 @@ x/y: where x-tuplet notes are to be played in y non-tuplet notes
 Enter text command (track 1):
 ```
 
-For example:
+Valid example:
 
 ```console
 (track 1): q q q q
 (track 2): q. e w.3/4 t11/10-s...5/3
+```
+
+Invalid example:
+```console
+(track 1): qq q--e q.... q2//3
+(track 2): d. ..e 3/4w t11/t s,5/3
 ```
 
 Then Marathon will ask for a morph value and a number of repetitions
