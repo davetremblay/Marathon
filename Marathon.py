@@ -83,12 +83,37 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
-        
+
         for note in notes_f:
             tickm = int(note*cf)
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
@@ -169,10 +194,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -255,10 +305,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -341,10 +416,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -427,10 +527,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -513,10 +638,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -599,10 +749,35 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
         f = 0
         
         for note in notes_f:
@@ -807,14 +982,40 @@ def Marathon(preset, comm1, comm2, morph1, morph2, repeats):
                 e += 1
         
         Tm = 0
+        
         for note in notes_f:
             Tm += int(note)
         
         cf = (T1*int(repeats))/Tm
+
+        for note in notes_f:
+            note = int(note*cf)
+                                
+        delta_t = Tm - T1*int(repeats)
+
+        if delta_t > 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] -= 1
+                i += 2
+        if delta_t < 0:
+            i = 1
+            for n in range(abs(delta_t)):
+                if i >= len(notes_f):
+                    i = 1
+                notes_f[i] += 1
+                i += 1
+
+        Tm = 0
+        for note in notes_f:
+            Tm += int(note)
+        
         f = 0
         e = 0
         for note in notes_f:
-            tickm = int(note*cf)
+            tickm = note
             if "r" in str(comm1).split(" ")[e//2] or "r" in str(comm2).split(" ")[e//2]:
                 noteon = midi.NoteOnEvent(tick=0, channel=0, data=[0, 1])
                 tra.append(noteon)
