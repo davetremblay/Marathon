@@ -1,4 +1,6 @@
-"""asjdlajslkdaslj"""
+# -*- coding: utf-8 -*-
+
+"""Presets for marathon."""
 
 import midi
 

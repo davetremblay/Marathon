@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-import presets
-
 """
 Created on Sat Feb 23 08:03:51 2019
 
@@ -14,6 +11,8 @@ custom patterns.
 
 @author: DaveTremblay
 """
+
+import presets
 
 
 def main():
