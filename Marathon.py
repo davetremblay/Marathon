@@ -6,7 +6,7 @@ import presets
 """
 Created on Sat Feb 23 08:03:51 2019
 
-Marathon is a program to automatically create microrhythm between two rhythmic 
+Marathon is a program to automatically create microrhythm between two rhythmic
 patterns in MIDI.
 
 Maraton offers a range of preset patterns and a text command option to create
@@ -168,6 +168,7 @@ r
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
         presets.text_command(morph1, morph2, repeats, comm1, comm2)
+
 
 # Execute the main program if this file is not being imported as a module
 if __name__ == "__main__":
