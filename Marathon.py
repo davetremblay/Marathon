@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import midi
+import presets
 
 """
 Created on Sat Feb 23 08:03:51 2019
@@ -89,42 +89,49 @@ Examples
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.swing(morph1, morph2, repeats)
 
     elif str(preset) == "2":
         print(morph_examples_1)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.half_swing(morph1, morph2, repeats)
 
     elif str(preset) == "3":
         print(morph_examples_2)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.west_african_triplet(morph1, morph2, repeats)
 
     elif str(preset) == "4":
         print(morph_examples_3)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.gwana_triplet(morph1, morph2, repeats)
 
     elif str(preset) == "5":
         print(morph_examples_4)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.brazilian_sixteens(morph1, morph2, repeats)
 
     elif str(preset) == "6":
         print(morph_examples_5)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.braffs_quintuplets(morph1, morph2, repeats)
 
     elif str(preset) == "7":
         print(morph_examples_6)
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
+        presets.vienesse_waltz(morph1, morph2, repeats)
 
     elif str(preset) == "99":
         text_notation = """
@@ -163,7 +170,7 @@ r
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
-
+        presets.text_command(morph1, morph2, repeats, comm1, comm2)
 
 # Execute the main program if this file is not being imported as a module
 if __name__ == "__main__":
