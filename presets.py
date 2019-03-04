@@ -105,13 +105,10 @@ def swing(morph1, morph2, repeats):
             notes_f[i] += 1
             i += 1
 
-    Tm = 0
-    for note in notes_f:
-        Tm += int(note)
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -207,6 +204,11 @@ def half_swing(morph1, morph2, repeats):
 
     for note in notes_f:
         note = int(note*cf)
+    
+    Tm = 0
+    
+    for note in notes_f:
+        Tm += int(note)
 
     delta_t = Tm - T1*int(repeats)
 
@@ -224,14 +226,16 @@ def half_swing(morph1, morph2, repeats):
                 i = 1
             notes_f[i] += 1
             i += 1
-
+            
     Tm = 0
+    
     for note in notes_f:
         Tm += int(note)
+
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -351,7 +355,7 @@ def west_african_triplet(morph1, morph2, repeats):
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -471,7 +475,7 @@ def gwana_triplet(morph1, morph2, repeats):
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -591,7 +595,7 @@ def brazilian_sixteens(morph1, morph2, repeats):
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -711,7 +715,7 @@ def braffs_quintuplets(morph1, morph2, repeats):
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -831,7 +835,7 @@ def vienesse_waltz(morph1, morph2, repeats):
     f = 0
 
     for note in notes_f:
-        tickm = int(note*cf)
+        tickm = int(note)
         noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
@@ -1071,7 +1075,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     f = 0
     e = 0
     for note in notes_f:
-        tickm = note
+        tickm = int(note)
         if "r" in str(comm1).split(" ")[e//2] or "r" in str(comm2).split(" ")[e//2]:
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[0, 1])
             tra.append(noteon)
