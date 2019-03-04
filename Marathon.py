@@ -156,11 +156,8 @@ x/y: where x-tuplet notes are to be played in y non-tuplet notes
 Rest (at the end)
 r
 """
-        print("Enter text notation for track 1")
         print(text_notation)
         comm1 = input("Enter text command (track 1): ")
-
-        print("Enter text notation for track 2")
         comm2 = input("Enter text command (track 2): ")
 
         if len(comm1.split(" ")) != len(comm2.split(" ")):
