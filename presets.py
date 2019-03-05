@@ -61,8 +61,12 @@ def swing(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -177,8 +181,12 @@ def half_swing(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -304,8 +312,12 @@ def west_african_triplet(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -424,8 +436,12 @@ def gwana_triplet(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -544,8 +560,12 @@ def brazilian_sixteens(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -664,8 +684,12 @@ def braffs_quintuplets(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -784,8 +808,12 @@ def vienesse_waltz(morph1, morph2, repeats):
 
             progress = currenttick / totaltick
 
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
@@ -1021,9 +1049,12 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
             tick2 = int(notes2_f[e])
 
             progress = currenttick / totaltick
-
-            w1 = (1 - progress) * (we/100) + progress * (ws/100)
-            w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            if ws != we:
+                w1 = (1 - progress) * (we/100) + progress * (ws/100)
+                w2 = progress * (we/100) + (1 - progress) * (ws/100)
+            else:
+                w1 = 1-float(float(morph1)/100)
+                w2 = float(float(morph1)/100)
 
             # rounding correction
             rc += (w1 * tick1) + (w2 * tick2) - float(int((w1 * tick1) + (w2 * tick2)))
