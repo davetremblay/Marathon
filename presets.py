@@ -892,18 +892,64 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
         "e": 480,
         "s": 240,
         "t": 120
-    }
+    }            
+    
+    new_comm1 = str(comm1).split(" ")
+    new_comm2 = str(comm2).split(" ")
+    
+    comm1 = ""
+    comm2 = ""
+        
+    for comm in new_comm1:
+        if "(" in str(comm):
+            num = int(comm.split("(")[0])
+            note = comm.split("(")[1].split(")")[0]
+            for n in range(num):
+                if comm1 == "":
+                    comm1 += str(note)
+                else:
+                    comm1 += " "+str(note)
+        else:
+            if comm1 == "":
+                comm1 += str(comm)
+            else:
+                comm1 += " "+str(comm)
+            
+    for comm in new_comm2:
+        if "(" in str(comm):
+            num = int(comm.split("(")[0])
+            note = comm.split("(")[1].split(")")[0]
+            for n in range(num):
+                if comm2 == "":
+                    comm2 += str(note)
+                else:
+                    comm2 += " "+str(note)
+        else:
+            if comm2 == "":
+                comm2 += str(comm)
+            else:
+                comm2 += " "+str(comm)
+            
+    if len(comm1.split(" ")) != len(comm2.split(" ")):
+        print("Error: The two commands must be of similar length\n\nTrack 1: "+str(comm1)+"\n\nTrack 2: "+str(comm2))
+        raise SystemExit
 
-    note_list1 = str(comm1).replace("-", " ").split(" ")
-    note_list2 = str(comm2).replace("-", " ").split(" ")
+    note_list1 = []
+    note_list2 = []
+    
+    for note in comm1.split(" "):
+        note_list1.append(str(note))
+    for note in comm2.split(" "):
+        note_list2.append(str(note))
 
     notes1 = []
     notes2 = []
-
-    # notes
+    
+    #notes
     for note in note_list1:
         notes1.append(int(0))
         notes1.append(int(note_length[str(note)[0]]))
+
     for note in note_list2:
         notes2.append(int(0))
         notes2.append(int(note_length[str(note)[0]]))
@@ -953,7 +999,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
             nom = int(str(note)[tuplet_start:len(note)].split("/")[0])
             tuplet_end = 0
             for char in str(note).split("/")[1]:
-                if char.isalpha() == False:
+                if char.isalpha() == False and char != "-":
                     tuplet_end += 1
                 else:
                     break
@@ -972,7 +1018,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
             nom = int(str(note)[tuplet_start:len(note)].split("/")[0])
             tuplet_end = 0
             for char in str(note).split("/")[1]:
-                if char.isalpha() == False:
+                if char.isalpha() == False and char != "-":
                     tuplet_end += 1
                 else:
                     break

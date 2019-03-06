@@ -158,11 +158,6 @@ r
         print(text_notation)
         comm1 = input("Enter text command (track 1): ")
         comm2 = input("Enter text command (track 2): ")
-
-        if len(comm1.split(" ")) != len(comm2.split(" ")):
-            print("Error: The number of notes in the two tracks is different.")
-            raise SystemExit
-
         morph1 = input("Enter starting morph value (0-100): ")
         morph2 = input("Enter ending morph value (0-100): ")
         repeats = input("How many repetitions do you want?: ")
