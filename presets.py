@@ -1148,6 +1148,8 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     comm1 = ""
     comm2 = ""
 
+    tick_rest = 0
+
     for comm in new_comm1:
         if "(" in str(comm):
             num = int(comm.split("(")[0])
@@ -1185,9 +1187,9 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     note_list1 = []
     note_list2 = []
 
-    for note in comm1.split(" "):
+    for note in str(comm1).replace("-", " ").split(" "):
         note_list1.append(str(note))
-    for note in comm2.split(" "):
+    for note in str(comm2).replace("-", " ").split(" "):
         note_list2.append(str(note))
 
     notes1 = []
@@ -1195,47 +1197,45 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
 
     #notes
     for note in note_list1:
-        notes1.append(int(0))
         notes1.append(int(note_length[str(note)[0]]))
 
     for note in note_list2:
-        notes2.append(int(0))
         notes2.append(int(note_length[str(note)[0]]))
 
     # dots
-    pos = 1
+    pos = 0
     for note in note_list1:
         if len(str(note)) == 2:
             if str(note)[1] == ".":
-                notes1[pos*2-1] += int(notes1[pos*2-1]/2)
+                notes1[pos] += int(notes1[pos]/2)
         if len(str(note)) == 3:
             if str(note)[2] == ".":
-                notes1[pos*2-1] += int(notes1[pos*2-1]/2)
-                notes1[pos*2-1] += int(notes1[pos*2-1]/6)
+                notes1[pos] += int(notes1[pos]/2)
+                notes1[pos] += int(notes1[pos]/6)
         if len(str(note)) == 4:
             if str(note)[3] == ".":
-                notes1[pos*2-1] += int(notes1[pos*2-1]/2)
-                notes1[pos*2-1] += int(notes1[pos*2-1]/6)
-                notes1[pos*2-1] += int(notes1[pos*2-1]/14)
+                notes1[pos] += int(notes1[pos]/2)
+                notes1[pos] += int(notes1[pos]/6)
+                notes1[pos] += int(notes1[pos]/14)
         pos += 1
-    pos = 1
+    pos = 0
     for note in note_list2:
         if len(str(note)) == 2:
             if str(note)[1] == ".":
-                notes2[pos*2-1] += int(notes2[pos*2-1]/2)
+                notes2[pos] += int(notes2[pos]/2)
         if len(str(note)) == 3:
             if str(note)[2] == ".":
-                notes2[pos*2-1] += int(notes2[pos*2-1]/2)
-                notes2[pos*2-1] += int(notes2[pos*2-1]/6)
+                notes2[pos] += int(notes2[pos]/2)
+                notes2[pos] += int(notes2[pos]/6)
         if len(str(note)) == 4:
             if str(note)[3] == ".":
-                notes2[pos*2-1] += int(notes2[pos*2-1]/2)
-                notes2[pos*2-1] += int(notes2[pos*2-1]/6)
-                notes2[pos*2-1] += int(notes2[pos*2-1]/14)
+                notes2[pos] += int(notes2[pos]/2)
+                notes2[pos] += int(notes2[pos]/6)
+                notes2[pos] += int(notes2[pos]/14)
         pos += 1
 
     # tuplets
-    pos = 1
+    pos = 0
     for note in note_list1:
         if "/" in str(note):
             tuplet_start = 0
@@ -1252,9 +1252,9 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
                 else:
                     break
             denom = int(str(note).split("/")[1][0:tuplet_end])
-            notes1[pos*2-1] = int(notes1[pos*2-1]*(denom/nom))
+            notes1[pos] = int(notes1[pos]*(denom/nom))
         pos += 1
-    pos = 1
+    pos = 0
     for note in note_list2:
         if "/" in str(note):
             tuplet_start = 0
@@ -1271,39 +1271,37 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
                 else:
                     break
             denom = int(str(note).split("/")[1][0:tuplet_end])
-            notes2[pos*2-1] = int(notes2[pos*2-1]*(denom/nom))
+            notes2[pos] = int(notes2[pos]*(denom/nom))
         pos += 1
 
     notes1_f = []
     notes2_f = []
 
     # tying notes
-    pos = 1
+    pos = 0
     for note in str(comm1).split(" "):
-        notes1_f.append(0)
         ties = 0
         if "-" in str(note):
             ties += int(str(note).count("-"))
-        tied_value = notes1[pos*2-1]
-        posi = 0
-        for n in range(ties-1):
-            tied_value += int(notes1[posi*2+1])
+        tied_value = notes1[pos]
+        posi = 1
+        for n in range(ties):
+            tied_value += int(notes1[pos+posi])
             posi += 1
         notes1_f.append(tied_value)
-        pos += 1
-    pos = 1
+        pos += 1+ties
+    pos = 0
     for note in str(comm2).split(" "):
-        notes2_f.append(0)
         ties = 0
         if "-" in str(note):
             ties += int(str(note).count("-"))
-        tied_value = notes2[pos*2-1]
-        posi = 0
-        for n in range(ties-1):
-            tied_value += int(notes2[posi*2+1])
+        tied_value = notes2[pos]
+        posi = 1
+        for n in range(ties):
+            tied_value += int(notes2[pos+posi])
             posi += 1
         notes2_f.append(tied_value)
-        pos += 1
+        pos += 1+ties
 
     # length equalization
     T1 = 0
@@ -1401,22 +1399,20 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     e = 0
     for note in notes_f:
         tickm = int(note)
-        if "r" in str(comm1).split(" ")[e//2] or "r" in str(comm2).split(" ")[e//2]:
-            noteon = midi.NoteOnEvent(tick=0, channel=0, data=[0, 1])
-            tra.append(noteon)
-            noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[0, 0])
-            tra.append(noteoff)
+        if "r" in str(comm1).split(" ")[e] or "r" in str(comm2).split(" ")[e]:
+            tick_rest += tickm
         else:
-            noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
+            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tickm, channel=0, data=[60, 0])
             tra.append(noteoff)
+            tick_rest = 0
         e += 1
         if e == len(str(comm1).split(" ")):
             e = 0
         f += tickm
 
-    trackend = midi.EndOfTrackEvent(tick=1)
+    trackend = midi.EndOfTrackEvent(tick=tick_rest+1)
     tra.append(trackend)
     midi.write_midifile(file_out, pat)
 

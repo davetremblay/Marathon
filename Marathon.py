@@ -19,12 +19,12 @@ def main():
     preset_options = """
 Choose preset
 
-1: Swing (2(q) / q. e)
-2: West African Triplet (3(q) / e 2(s))
-3: Gnawa Triplet (3(e) / e s e)
-4: Brazilian 16ths (4(s) / e 2(s) e)
-5: Braff's Quintuplet (5(s) / e 2(s) e s)
-6: Viennese Waltz (3(q) / e. s-q q)
+1:  Swing (2(q) / q. e)
+2:  West African Triplet (3(q) / e 2(s))
+3:  Gnawa Triplet (3(e) / e s e)
+4:  Brazilian 16ths (4(s) / e 2(s) e)
+5:  Braff's Quintuplet (5(s) / e 2(s) e s)
+6:  Viennese Waltz (3(q) / e. s-q q)
 99: Text Command
 """
     print(preset_options)
@@ -35,51 +35,40 @@ Choose preset
     morph2 = ""
     repeats = ""
 
-    morph_examples_1 = """
-Examples
-0: 1:1 Straight Quarter Notes
-29: ~4:3 Septuplet Feel
-40: 3:2 Quintuplet Feel
-50: 5:3 Sixteenths Feel
-66.7: 2:1 Triplet Feel
-85.7: ~5:2 Septuplet Feel
-100: 3:1 Eighths Feel
-"""
-
     morph_examples_2 = """
 Examples
-0: 1:1:1 Straight Triplet Notes
-50: Halfway Morph
-100: 2:1:1 16ths Gallop
+0:   1:1:1 Straight Triplet Notes
+50:  Halfway Morph
+100: 2:1:1 Sixteenths Gallop
 """
 
     morph_examples_3 = """
 Examples
-0: 1:1:1 Straight Triplet Notes
-50: Halfway Morph
+0:   1:1:1 Straight Triplet Notes
+50:  Halfway Morph
 100: 2:1:2 Quintuplet Feel
 """
 
     morph_examples_4 = """
 Examples
-0: 1:1:1:1 Straight 16th Notes
-50: Halfway Morph
+0:   1:1:1:1 Straight Sixteenth Notes
+50:  Halfway Morph
 100: 2:1:1:2 Sixtuplet Feel
 """
 
     morph_examples_5 = """
 Examples
-0: 1:1:1:1:1 Straight Quintuplets
-50: Halfway Morph
+0:   1:1:1:1:1 Straight Quintuplets
+50:  Halfway Morph
 100: 2:1:1:2:1 Septuplet Feel
 """
 
     morph_examples_6 = """
 Examples
-0: 1:1:1 Straight Quarter Notes
-50: Halfway Morph
-65: Recommended Morph
-100: 3:5:4 16ths Feel
+0:   1:1:1 Straight Quarter Notes
+50:  Halfway Morph
+65:  Recommended Morph
+100: 3:5:4 Sixteenths Feel
 """
 
     if preset == "1":
@@ -205,8 +194,8 @@ s: sixteenth note
 t: thirty-second note
 
 Dots (after the note)
-.: dotted
-..: double dotted
+.:   dotted
+..:  double dotted
 ...: triple dotted
 
 Tuplets (after note and dots)
