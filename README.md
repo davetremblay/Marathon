@@ -30,7 +30,7 @@ As of March 6, Marathon Text Command supports shorthand notation for repeated no
 You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
 
 ## Installation
-You need to install [python-midi](python-midi). Then, just type
+You need to install [python-midi](https://github.com/vishnubob/python-midi). Then, just type
 
 ```console
 $ python Marathon.py
