@@ -79,7 +79,7 @@ Base-16 Swing (up to 15:1):
 
 Enter number:
 1
-```console
+```
 
 Then for starting and ending morph values:
 
