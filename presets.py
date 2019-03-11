@@ -3,7 +3,9 @@
 """Presets for marathon."""
 
 import midi
+import datetime
 
+file_out = "marathon_out"+str(datetime.datetime.now())+".mid"
 
 def swing(morph1, morph2, repeats):
     """TODO: Docstring for Swing.
@@ -15,7 +17,6 @@ def swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-    file_out = "marathon_out.mid"
 
     # straight
     notes1 = [0, 960, 0, 960]
@@ -134,9 +135,7 @@ def half_swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-
-    file_out = "marathon_out.mid"
-
+    
     # straight
     notes1 = [0, 1920, 0, 960, 0, 960]
     # phrased
@@ -264,8 +263,7 @@ def hard_swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-    file_out = "marathon_out.mid"
-
+    
     # straight
     notes1 = [0, 960, 0, 960]
     # phrased
@@ -383,8 +381,6 @@ def half_hard_swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-
-    file_out = "marathon_out.mid"
 
     # straight
     notes1 = [0, 1920, 0, 960, 0, 960]
@@ -514,8 +510,6 @@ def west_african_triplet(morph1, morph2, repeats):
 
     """
 
-    file_out = "marathon_out.mid"
-
     # straight
     notes1 = [0, 480, 0, 480, 0, 480]
     # phrased
@@ -637,8 +631,6 @@ def gwana_triplet(morph1, morph2, repeats):
     Returns: TODO
 
     """
-
-    file_out = "marathon_out.mid"
 
     # straight
     notes1 = [0, 480, 0, 480, 0, 480]
@@ -762,8 +754,6 @@ def brazilian_sixteens(morph1, morph2, repeats):
 
     """
 
-    file_out = "marathon_out.mid"
-
     # straight
     notes1 = [0, 240, 0, 240, 0, 240, 0, 240]
     # phrased
@@ -885,8 +875,6 @@ def braffs_quintuplets(morph1, morph2, repeats):
     Returns: TODO
 
     """
-
-    file_out = "marathon_out.mid"
 
     # straight
     notes1 = [0, 192, 0, 192, 0, 192, 0, 192, 0, 192]
@@ -1010,8 +998,6 @@ def vienesse_waltz(morph1, morph2, repeats):
 
     """
 
-    file_out = "marathon_out.mid"
-
     # straight
     notes1 = [0, 960, 0, 960, 0, 960]
     # phrased
@@ -1130,8 +1116,6 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     :returns: TODO
 
     """
-
-    file_out = "marathon_out.mid"
 
     note_length = {
         "w": 3840,
