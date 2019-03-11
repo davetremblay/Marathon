@@ -30,13 +30,7 @@ As of March 6, Marathon Text Command supports shorthand notation for repeated no
 You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
 
 ## Installation
-You need to install [python-midi](https://github.com/vishnubob/python-midi). Then, just type
-
-```console
-$ python Marathon.py
-```
-
-in a terminal, and enjoy the program.
+You need to install [python-midi](https://github.com/vishnubob/python-midi) before running Marathon.py.
 
 ## Example Usage
 
@@ -58,7 +52,7 @@ Choose preset
 4: Brazilian 16ths (4(s) / e 2(s) e)
 5: Braff's Quintuplet (5(s) / e 2(s) e s)
 6: Viennese Waltz (3(q) / e. s-q q)
-99: Text Command
+0: Text Command
 
 Enter number:
 1
@@ -87,13 +81,13 @@ Then for starting and ending morph values:
 Enter starting morph value (0-100)
 
 Examples
-0: 1:1 Straight Quarter Notes
-29: ~4:3 Septuplet Feel
-40: 3:2 Quintuplet Feel
-50: 5:3 Eighth Feel
+0:    1:1 Straight Quarter Notes
+29:   4:3 Septuplet Feel
+40:   3:2 Quintuplet Feel
+50:   5:3 Eighth Feel
 66.7: 2:1 Triplet Feel
-85.7: ~5:2 Septuplet Feel
-100: 3:1 Eighth Feel
+85.7: 5:2 Septuplet Feel
+100:  3:1 Eighth Feel
 
 Enter starting morph value (0-100):
 40
@@ -101,13 +95,13 @@ Enter starting morph value (0-100):
 Enter ending morph value (0-100)
 
 Examples
-0: 1:1 Straight Quarter Notes
-29: ~4:3 Septuplet Feel
-40: 3:2 Quintuplet Feel
-50: 5:3 Eighth Feel
+0:    1:1 Straight Quarter Notes
+29:   4:3 Septuplet Feel
+40:   3:2 Quintuplet Feel
+50:   5:3 Eighth Feel
 66.7: 2:1 Triplet Feel
-85.7: ~5:2 Septuplet Feel
-100: 3:1 Eighth Feel
+85.7: 5:2 Septuplet Feel
+100:  3:1 Eighth Feel
 
 Enter ending morph value (0-100):
 60
@@ -124,7 +118,7 @@ You will then find the file `marathon_out.mid` in the same directory, which you 
 
 
 ## Using Text Command
-Select preset "99" for Text Command and you will see the vocabulary:
+Select preset "0" for Text Command and you will see the vocabulary:
 
 ```console
 Enter text notation for track 1
@@ -140,8 +134,8 @@ s: sixteenth note
 t: thirty-second note
 
 Dots (after the note)
-.: dotted
-..: double dotted
+.:   dotted
+..:  double dotted
 ...: triple dotted
 
 Tuplets (after note and dots)
@@ -166,7 +160,7 @@ Invalid example:
 (track 2): d.-2(e) ..e 3/4w t11/t s,5/3
 ```
 
-Then Marathon will ask for a morph value and a number of repetitions
+Then Marathon will ask for a morph value and a number of repetitions.
 
 ## Author
 Dave Tremblay

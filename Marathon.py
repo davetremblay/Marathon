@@ -19,13 +19,13 @@ def main():
     preset_options = """
 Choose preset
 
-1:  Swing (2(q) / q. e)
-2:  West African Triplet (3(q) / e 2(s))
-3:  Gnawa Triplet (3(e) / e s e)
-4:  Brazilian 16ths (4(s) / e 2(s) e)
-5:  Braff's Quintuplet (5(s) / e 2(s) e s)
-6:  Viennese Waltz (3(q) / e. s-q q)
-99: Text Command
+1: Swing (2(q) / q. e)
+2: West African Triplet (3(q) / e 2(s))
+3: Gnawa Triplet (3(e) / e s e)
+4: Brazilian 16ths (4(s) / e 2(s) e)
+5: Braff's Quintuplet (5(s) / e 2(s) e s)
+6: Viennese Waltz (3(q) / e. s-q q)
+0: Text Command
 """
     print(preset_options)
     preset = input("Enter number: ")
@@ -181,7 +181,7 @@ Examples
         repeats = input("How many repetitions do you want?: ")
         presets.vienesse_waltz(morph1, morph2, repeats)
 
-    elif preset == "99":
+    elif preset == "0":
         text_notation = """
 Separate each note by a space, tied notes with a dash
 

@@ -1205,33 +1205,20 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     # dots
     pos = 0
     for note in note_list1:
-        if len(str(note)) == 2:
-            if str(note)[1] == ".":
-                notes1[pos] += int(notes1[pos]/2)
-        if len(str(note)) == 3:
-            if str(note)[2] == ".":
-                notes1[pos] += int(notes1[pos]/2)
-                notes1[pos] += int(notes1[pos]/6)
-        if len(str(note)) == 4:
-            if str(note)[3] == ".":
-                notes1[pos] += int(notes1[pos]/2)
-                notes1[pos] += int(notes1[pos]/6)
-                notes1[pos] += int(notes1[pos]/14)
+        n_dots = 0
+        if "." in str(note):
+            n_dots += int(str(note).count("."))
+            for n in range(n_dots):
+                notes1[pos] += int(notes1[pos]/(2*((n+1)**2-n)))
         pos += 1
+                        
     pos = 0
     for note in note_list2:
-        if len(str(note)) == 2:
-            if str(note)[1] == ".":
-                notes2[pos] += int(notes2[pos]/2)
-        if len(str(note)) == 3:
-            if str(note)[2] == ".":
-                notes2[pos] += int(notes2[pos]/2)
-                notes2[pos] += int(notes2[pos]/6)
-        if len(str(note)) == 4:
-            if str(note)[3] == ".":
-                notes2[pos] += int(notes2[pos]/2)
-                notes2[pos] += int(notes2[pos]/6)
-                notes2[pos] += int(notes2[pos]/14)
+        n_dots = 0
+        if "." in str(note):
+            n_dots += int(str(note).count("."))
+            for n in range(n_dots):
+                notes2[pos] += int(notes2[pos]/(2*((n+1)**2-n)))
         pos += 1
 
     # tuplets
@@ -1285,9 +1272,10 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
             ties += int(str(note).count("-"))
         tied_value = notes1[pos]
         posi = 1
-        for n in range(ties):
-            tied_value += int(notes1[pos+posi])
-            posi += 1
+        if ties != 0:     
+            for n in range(ties):
+                tied_value += int(notes1[pos+posi])
+                posi += 1
         notes1_f.append(tied_value)
         pos += 1+ties
     pos = 0
@@ -1297,9 +1285,10 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
             ties += int(str(note).count("-"))
         tied_value = notes2[pos]
         posi = 1
-        for n in range(ties):
-            tied_value += int(notes2[pos+posi])
-            posi += 1
+        if ties != 0:     
+            for n in range(ties):
+                tied_value += int(notes2[pos+posi])
+                posi += 1
         notes2_f.append(tied_value)
         pos += 1+ties
 
