@@ -3,12 +3,13 @@
 """Presets for marathon."""
 
 import midi
-import datetime
+import time
 
-file_out = "marathon_out"+str(datetime.datetime.now())+".mid"
+file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
 
 format_out = 1
 res_out = 960
+tick_rest = 0
 
 pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
 tra = midi.Track()
@@ -145,7 +146,7 @@ def finalizing(notes_final,total_1,total_2,repeats):
 
     for note in notes_final:
         tick_morphed = int(note)
-        noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
+        noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
         tra.append(noteon)
         noteoff = midi.NoteOffEvent(tick=tick_morphed, channel=0, data=[60, 0])
         tra.append(noteoff)
