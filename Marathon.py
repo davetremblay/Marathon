@@ -183,8 +183,6 @@ Examples
 
     elif preset == "0":
         text_notation = """
-Separate each note by a space, tied notes with a dash
-
 Notes
 w: whole note
 h: half note
@@ -196,13 +194,17 @@ t: thirty-second note
 Dots (after the note)
 .:   dotted
 ..:  double dotted
-...: triple dotted
+...: triple dotted (and so on)
 
 Tuplets (after note and dots)
 x/y: where x-tuplet notes are to be played in y non-tuplet notes
 
 Rest (at the end)
 r
+
+Separate each note by a space, tied notes with a dash
+
+***The length of track 1 will define the length of the output track***
 """
         print(text_notation)
         comm1 = input("Enter text command (track 1): ")
