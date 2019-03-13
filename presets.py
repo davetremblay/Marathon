@@ -9,7 +9,7 @@ file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
 
 format_out = 1
 res_out = 960
-tick_rest = 0
+tick_rest = 1
 
 pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
 tra = midi.Track()
@@ -145,11 +145,18 @@ def finalizing(notes_final,total_1,total_2,repeats):
             i += 1
 
     for note in notes_final:
+        print(notes_final.index(note))
         tick_morphed = int(note)
-        noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
-        tra.append(noteon)
-        noteoff = midi.NoteOffEvent(tick=tick_morphed, channel=0, data=[60, 0])
-        tra.append(noteoff)
+        if str(notes_final.index(note)) == "0":
+            noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
+            tra.append(noteon)
+            noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
+            tra.append(noteoff)
+        else:
+            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
+            tra.append(noteon)
+            noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
+            tra.append(noteoff)
 
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
@@ -167,9 +174,9 @@ def swing(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 960, 0, 960]
+    notes1 = [960, 960]
     # phrased
-    notes2 = [0, 1440, 0, 480]
+    notes2 = [1440, 480]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -194,9 +201,9 @@ def half_swing(morph1, morph2, repeats):
     """
     
     # straight
-    notes1 = [0, 1920, 0, 960, 0, 960]
+    notes1 = [1920, 960, 960]
     # phrased
-    notes2 = [0, 1920, 0, 1440, 0, 480]
+    notes2 = [1920, 1440, 480]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -221,9 +228,9 @@ def hard_swing(morph1, morph2, repeats):
     """
     
     # straight
-    notes1 = [0, 960, 0, 960]
+    notes1 = [960, 960]
     # phrased
-    notes2 = [0, 1800, 0, 120]
+    notes2 = [1800, 120]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -248,9 +255,9 @@ def half_hard_swing(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 1920, 0, 960, 0, 960]
+    notes1 = [1920, 960, 960]
     # phrased
-    notes2 = [0, 1920, 0, 1800, 0, 120]
+    notes2 = [1920, 1800, 120]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -275,9 +282,9 @@ def west_african_triplet(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 480, 0, 480, 0, 480]
+    notes1 = [480, 480, 480]
     # phrased
-    notes2 = [0, 720, 0, 360, 0, 360]
+    notes2 = [720, 360, 360]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -302,9 +309,9 @@ def gwana_triplet(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 480, 0, 480, 0, 480]
+    notes1 = [480, 480, 480]
     # phrased
-    notes2 = [0, 576, 0, 288, 0, 576]
+    notes2 = [576, 288, 576]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -329,9 +336,9 @@ def brazilian_sixteens(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 240, 0, 240, 0, 240, 0, 240]
+    notes1 = [240, 240, 240, 240]
     # phrased
-    notes2 = [0, 320, 0, 160, 0, 160, 0, 320]
+    notes2 = [320, 160, 160, 320]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -356,9 +363,9 @@ def braffs_quintuplets(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 192, 0, 192, 0, 192, 0, 192, 0, 192]
+    notes1 = [192, 192, 192, 192, 192]
     # phrased
-    notes2 = [0, 274, 0, 137, 0, 137, 0, 275, 0, 137]
+    notes2 = [274, 137, 137, 275, 137]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -383,9 +390,9 @@ def vienesse_waltz(morph1, morph2, repeats):
     """
 
     # straight
-    notes1 = [0, 960, 0, 960, 0, 960]
+    notes1 = [960, 960, 960]
     # phrased
-    notes2 = [0, 720, 0, 1200, 0, 960]
+    notes2 = [720, 1200, 960]
 
     # length equalization
     total_1 = length_equalization(notes1,repeats)
@@ -421,7 +428,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     comm1 = ""
     comm2 = ""
 
-    tick_rest = 0
+    tick_rest = 1
 
     for comm in new_comm1:
         if "(" in str(comm):
@@ -609,10 +616,16 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
 
     for note in notes_final:
         tick_morphed = int(note)
-        noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
-        tra.append(noteon)
-        noteoff = midi.NoteOffEvent(tick=tick_morphed, channel=0, data=[60, 0])
-        tra.append(noteoff)
+        if str(notes_final.index(note)) == "0":
+            noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
+            tra.append(noteon)
+            noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
+            tra.append(noteoff)
+        else:
+            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
+            tra.append(noteon)
+            noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
+            tra.append(noteoff)
 
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
