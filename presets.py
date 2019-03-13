@@ -130,14 +130,14 @@ def finalizing(notes_final,total_1,total_2,repeats):
     delta_t = total_morphed - total_1*int(repeats)
 
     if delta_t > 0:
-        i = 1
+        i = 0
         for n in range(abs(delta_t)):
             if i >= len(notes_final):
                 i = 1
             notes_final[i] -= 1
-            i += 2
+            i += 1
     if delta_t < 0:
-        i = 1
+        i = 0
         for n in range(abs(delta_t)):
             if i >= len(notes_final):
                 i = 1
