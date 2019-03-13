@@ -12,11 +12,18 @@ custom patterns.
 @author: DaveTremblay
 """
 
+import os
+try:
+    import jinja2
+except ImportError:
+    import pip
+    pip.main(['install','jinja2'])
 import presets
-
-
+    
 def main():
     preset_options = """
+Marathon: Microrhythm Generation Software
+
 Choose preset
 
 1: Swing (2(q) / q. e)
@@ -216,5 +223,5 @@ Separate each note by a space, tied notes with a dash
 
 
 # Execute the main program if this file is not being imported as a module
-if __name__ == "__main__":
+while __name__ == "__main__":
     main()
