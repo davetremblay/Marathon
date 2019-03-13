@@ -40,6 +40,7 @@ Choose preset
     comm2 = ""
     morph1 = ""
     morph2 = ""
+    pattern_tick = ""
     repeats = ""
 
     morph_examples_2 = """
@@ -209,17 +210,27 @@ x/y: where x-tuplet notes are to be played in y non-tuplet notes
 Rest (at the end)
 r
 
-Separate each note by a space, tied notes with a dash
+Single Note Repetition
+x(note): where x is an integer and "note" is the repeated note
 
-***The length of track 1 will define the length of the output track***
+Separate each note by a space, tied notes with a dash
 """
         print(text_notation)
         comm1 = input("Enter text command (track 1): ")
         comm2 = input("Enter text command (track 2): ")
         morph1 = float(input("Enter starting morph value (0-100): "))
         morph2 = float(input("Enter ending morph value (0-100): "))
+        pattern_tick = int(input("""
+whole note =        3840 ticks
+half note =         1920 ticks
+quarter note =       960 ticks
+eighth note =        480 ticks
+sixteenth note =     240 ticks
+thirty-second note = 120 ticks
+
+Enter the total tick value of the pattern: """))
         repeats = float(input("How many repetitions do you want?: "))
-        presets.text_command(morph1, morph2, repeats, comm1, comm2)
+        presets.text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick)
 
 
 # Execute the main program if this file is not being imported as a module

@@ -398,7 +398,7 @@ def vienesse_waltz(morph1, morph2, repeats):
     # finalizing
     finalizing(notes_final,total_1,total_2,repeats)
 
-def text_command(morph1, morph2, repeats, comm1, comm2):
+def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     """TODO: Docstring for textCommand.
 
     :arg1: TODO
@@ -574,5 +574,46 @@ def text_command(morph1, morph2, repeats, comm1, comm2):
     notes_final = rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick)
 
     # finalizing
-    finalizing(notes_final,total_1,total_2,repeats)
+    # finalizing(notes_final,total_1,total_2,repeats)
+    total_morphed = 0
 
+    for note in notes_final:
+        total_morphed += int(note)
+
+    correction_factor = (pattern_tick*int(repeats))/total_morphed
+
+    for note in notes_final:
+        note = int(note*correction_factor)
+
+    total_morphed = 0
+
+    for note in notes_final:
+        total_morphed += int(note)
+
+    delta_t = total_morphed - pattern_tick*int(repeats)
+
+    if delta_t > 0:
+        i = 0
+        for n in range(abs(delta_t)):
+            if i >= len(notes_final):
+                i = 1
+            notes_final[i] -= 1
+            i += 1
+    if delta_t < 0:
+        i = 0
+        for n in range(abs(delta_t)):
+            if i >= len(notes_final):
+                i = 1
+            notes_final[i] += 1
+            i += 1
+
+    for note in notes_final:
+        tick_morphed = int(note)
+        noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
+        tra.append(noteon)
+        noteoff = midi.NoteOffEvent(tick=tick_morphed, channel=0, data=[60, 0])
+        tra.append(noteoff)
+
+    trackend = midi.EndOfTrackEvent(tick=1)
+    tra.append(trackend)
+    midi.write_midifile(file_out, pat)
