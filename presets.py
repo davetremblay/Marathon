@@ -145,7 +145,6 @@ def finalizing(notes_final,total_1,total_2,repeats):
             i += 1
 
     for note in notes_final:
-        print(notes_final.index(note))
         tick_morphed = int(note)
         if str(notes_final.index(note)) == "0":
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
