@@ -5,8 +5,6 @@
 import midi
 import time
 
-file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
-
 format_out = 1
 res_out = 960
 tick_rest = 1
@@ -157,6 +155,7 @@ def finalizing(notes_final,total_1,total_2,repeats):
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
 
+    file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
     midi.write_midifile(file_out, pat)
@@ -630,6 +629,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
         else:
             tick_rest += tick_morphed
 
+    file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
     midi.write_midifile(file_out, pat)
