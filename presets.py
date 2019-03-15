@@ -152,7 +152,7 @@ def finalizing(notes_final,total_1,total_2,repeats):
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
         else:
-            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
+            noteon = midi.NoteOnEvent(tick=tick_rest+1, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
@@ -621,7 +621,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
         else:
-            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
+            noteon = midi.NoteOnEvent(tick=tick_rest+1, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
