@@ -234,5 +234,5 @@ Enter the total tick value of the pattern: """))
 
 
 # Execute the main program if this file is not being imported as a module
-while __name__ == "__main__":
+if __name__ == "__main__":
     main()
