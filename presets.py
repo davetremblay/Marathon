@@ -36,6 +36,7 @@ def total_tick(notes2,total_1,total_2,repeats):
     ratio = total_1 / total_2
     
     pos = 0
+    
     for note in notes2:
         notes2[pos] = int(note*ratio)
         pos += 1
@@ -112,28 +113,12 @@ def finalizing(notes_final,total_1,total_2,repeats):
     for note in notes_final:
         total_morphed += int(note)
 
-    correction_factor = (total_1*int(repeats))/total_morphed
+    correction_factor = (total_1*int(repeats)) / total_morphed
 
+    notes_final_final = []
     for note in notes_final:
-        note = int(note*correction_factor)
-
-    delta_t = total_morphed - total_1*int(repeats)
-
-    if delta_t > 0:
-        i = 0
-        for n in range(abs(delta_t)):
-            if i >= len(notes_final):
-                i = 1
-            notes_final[i] -= 1
-            i += 1
-    if delta_t < 0:
-        i = 0
-        for n in range(abs(delta_t)):
-            if i >= len(notes_final):
-                i = 1
-            notes_final[i] += 1
-            i += 1
-            
+        notes_final_final.append(int(note*correction_factor))
+          
     format_out = 1
     res_out = 960
     
@@ -143,18 +128,20 @@ def finalizing(notes_final,total_1,total_2,repeats):
     
     tick_rest = 1
 
-    for note in notes_final:
+    for note in notes_final_final:
         tick_morphed = int(note)
         if str(notes_final.index(note)) == "0":
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
+            tick_rest = 1
         else:
-            noteon = midi.NoteOnEvent(tick=tick_rest+1, channel=0, data=[60, 70])
+            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
+            tick_rest = 1
 
     file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
     trackend = midi.EndOfTrackEvent(tick=1)
@@ -570,12 +557,12 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
         pos += 1+ties
 
     # length equalization
-    total_1 = length_equalization(notes1,repeats)
-    total_2 = length_equalization(notes2,repeats)
-    totaltick = total_tick(notes2,total_1,total_2,repeats)
+    total_1 = length_equalization(notes1_f,repeats)
+    total_2 = length_equalization(notes2_f,repeats)
+    totaltick = total_tick(notes2_f,total_1,total_2,repeats)
 
     # rounding correction
-    notes_final = rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick)
+    notes_final = rounding_correction(notes1_f,notes2_f,morph1,morph2,repeats,totaltick)
 
     # finalizing
     # finalizing(notes_final,total_1,total_2,repeats)
@@ -584,33 +571,12 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     for note in notes_final:
         total_morphed += int(note)
 
-    correction_factor = (pattern_tick*int(repeats))/total_morphed
+    correction_factor = (pattern_tick*int(repeats)) / total_morphed
 
+    notes_final_final = []
     for note in notes_final:
-        note = int(note*correction_factor)
+        notes_final_final.append(int(note*correction_factor))
 
-    total_morphed = 0
-
-    for note in notes_final:
-        total_morphed += int(note)
-
-    delta_t = total_morphed - pattern_tick*int(repeats)
-
-    if delta_t > 0:
-        i = 0
-        for n in range(abs(delta_t)):
-            if i >= len(notes_final):
-                i = 1
-            notes_final[i] -= 1
-            i += 1
-    if delta_t < 0:
-        i = 0
-        for n in range(abs(delta_t)):
-            if i >= len(notes_final):
-                i = 1
-            notes_final[i] += 1
-            i += 1
-            
     format_out = 1
     res_out = 960
     
@@ -619,23 +585,33 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     pat.append(tra)
     
     tick_rest = 1
+    index = 0
+    index_comm = 0
 
-    for note in notes_final:
+    for note in notes_final_final:
         tick_morphed = int(note)
-        if str(notes_final.index(note)) == "0" and "r" not in str(comm1[notes_final.index(note)]):
+        if str(index) == "0"  and "r" not in str(comm1).split(" ")[index_comm]:
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
             tick_rest = 1
-        elif "r" not in str(comm1[notes_final.index(note)]):
-            noteon = midi.NoteOnEvent(tick=tick_rest+1, channel=0, data=[60, 70])
+        elif str(index) != "0" and "r" not in str(comm1).split(" ")[index_comm]:
+            noteon = midi.NoteOnEvent(tick=tick_rest, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
             tick_rest = 1
+        elif str(index) == "0"  and "r" in str(comm1).split(" ")[index_comm]:
+            tick_rest = tick_morphed
         else:
             tick_rest += tick_morphed
+            
+        index += 1
+        index_comm += 1
+        
+        if index_comm == len(new_comm1):
+            index_comm = 0
 
     file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
     trackend = midi.EndOfTrackEvent(tick=1)
