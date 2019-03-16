@@ -622,13 +622,13 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
 
     for note in notes_final:
         tick_morphed = int(note)
-        if str(notes_final.index(note)) == "0" and "r" not in str(new_comm1[notes_final.index(note)]):
+        if str(notes_final.index(note)) == "0" and "r" not in str(comm1[notes_final.index(note)]):
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
             tick_rest = 1
-        elif "r" not in str(new_comm1[notes_final.index(note)]):
+        elif "r" not in str(comm1[notes_final.index(note)]):
             noteon = midi.NoteOnEvent(tick=tick_rest+1, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
