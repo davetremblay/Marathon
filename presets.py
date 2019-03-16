@@ -5,14 +5,6 @@
 import midi
 import time
 
-format_out = 1
-res_out = 960
-tick_rest = 1
-
-pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
-tra = midi.Track()
-pat.append(tra)
-
 def length_equalization(notes,repeats):
     """TODO: Docstring for Swing.
 
@@ -141,6 +133,15 @@ def finalizing(notes_final,total_1,total_2,repeats):
                 i = 1
             notes_final[i] += 1
             i += 1
+            
+    format_out = 1
+    res_out = 960
+    
+    pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
+    tra = midi.Track()
+    pat.append(tra)
+    
+    tick_rest = 1
 
     for note in notes_final:
         tick_morphed = int(note)
@@ -426,8 +427,6 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     comm1 = ""
     comm2 = ""
 
-    tick_rest = 1
-
     for comm in new_comm1:
         if "(" in str(comm):
             num = int(comm.split("(")[0])
@@ -611,6 +610,8 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
                 i = 1
             notes_final[i] += 1
             i += 1
+            
+    tick_rest = 1
 
     for note in notes_final:
         tick_morphed = int(note)
