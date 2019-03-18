@@ -19,9 +19,9 @@ def length_equalization(notes,repeats):
     total = 0
     for note in notes:
         total += int(note)
-        
+
     return total
-        
+
 def total_tick(notes2,total_1,total_2,repeats):
     """TODO: Docstring for Swing.
 
@@ -34,15 +34,15 @@ def total_tick(notes2,total_1,total_2,repeats):
     """
 
     ratio = total_1 / total_2
-    
+
     pos = 0
-    
+
     for note in notes2:
         notes2[pos] = int(note*ratio)
         pos += 1
 
     totaltick = total_1 * int(repeats)
-    
+
     return totaltick
 
 def rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick):
@@ -60,7 +60,7 @@ def rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick):
 
     weight_start = float(morph1)
     weight_end = float(morph2)
-    
+
     currenttick = 0
 
     notes_final = []
@@ -90,11 +90,11 @@ def rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick):
                 correction = 0
 
             notes_final.append(int(tick_morphed))
-            
+
             currenttick += tick_morphed
 
             e += 1
-            
+
     return notes_final
 
 def finalizing(notes_final,total_1,total_2,repeats):
@@ -118,14 +118,14 @@ def finalizing(notes_final,total_1,total_2,repeats):
     notes_final_final = []
     for note in notes_final:
         notes_final_final.append(int(note*correction_factor))
-          
+
     format_out = 1
     res_out = 960
-    
+
     pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
     tra = midi.Track()
     pat.append(tra)
-    
+
     tick_rest = 1
 
     for note in notes_final_final:
@@ -174,7 +174,7 @@ def swing(morph1, morph2, repeats):
 
     # finalizing
     finalizing(notes_final,total_1,total_2,repeats)
-    
+
 def half_swing(morph1, morph2, repeats):
     """TODO: Docstring for HalfSwing.
 
@@ -185,7 +185,7 @@ def half_swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-    
+
     # straight
     notes1 = [1920, 960, 960]
     # phrased
@@ -212,7 +212,7 @@ def hard_swing(morph1, morph2, repeats):
     Returns: TODO
 
     """
-    
+
     # straight
     notes1 = [960, 960]
     # phrased
@@ -443,10 +443,10 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
                 comm2 += str(comm)
             else:
                 comm2 += " "+str(comm)
-
     if len(comm1.split(" ")) != len(comm2.split(" ")):
-        print("Error: The two commands must be of similar length\n\nTrack 1: "+str(comm1)+"\n\nTrack 2: "+str(comm2))
-        raise SystemExit
+        print("Error: The two commands must be of similar length\n\nTrack 1: "+str(comm1)+" (length: "+str(len(comm1.split(" ")))+")\n\nTrack 2: "+str(comm2)+" (length: "+str(len(comm2.split(" ")))+")")
+        import Marathon
+        Marathon.main()
 
     note_list1 = []
     note_list2 = []
@@ -461,10 +461,21 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
 
     #notes
     for note in note_list1:
-        notes1.append(int(note_length[str(note)[0]]))
+        try:
+            notes1.append(int(note_length[str(note)[0]]))
+        except KeyError:
+            print("Error: "+str(note)+" is not a valid command.")
+            import Marathon
+            Marathon.main()
 
     for note in note_list2:
         notes2.append(int(note_length[str(note)[0]]))
+        try:
+            notes2.append(int(note_length[str(note)[0]]))
+        except KeyError:
+            print("Error: "+str(note)+" is not a valid command.")
+            import Marathon
+            Marathon.main()
 
     # dots
     pos = 0
@@ -475,7 +486,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             for n in range(n_dots):
                 notes1[pos] += int(notes1[pos]/(2*((n+1)**2-n)))
         pos += 1
-                        
+
     pos = 0
     for note in note_list2:
         n_dots = 0
@@ -536,7 +547,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             ties += int(str(note).count("-"))
         tied_value = notes1[pos]
         posi = 1
-        if ties != 0:     
+        if ties != 0:
             for n in range(ties):
                 tied_value += int(notes1[pos+posi])
                 posi += 1
@@ -549,7 +560,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             ties += int(str(note).count("-"))
         tied_value = notes2[pos]
         posi = 1
-        if ties != 0:     
+        if ties != 0:
             for n in range(ties):
                 tied_value += int(notes2[pos+posi])
                 posi += 1
@@ -579,11 +590,11 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
 
     format_out = 1
     res_out = 960
-    
+
     pat = midi.Pattern(format=int(format_out), resolution=int(res_out))
     tra = midi.Track()
     pat.append(tra)
-    
+
     tick_rest = 1
     index = 0
     index_comm = 0
@@ -606,10 +617,10 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             tick_rest = tick_morphed
         else:
             tick_rest += tick_morphed
-            
+
         index += 1
         index_comm += 1
-        
+
         if index_comm == len(new_comm1):
             index_comm = 0
 
