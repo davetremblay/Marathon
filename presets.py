@@ -121,7 +121,7 @@ def finalizing(notes_final,total_1,total_2,repeats):
         
     total_morphed = 0
 
-    for note in notes_final:
+    for note in notes_final_final:
         total_morphed += int(note)
 
     remainder = (total_1*int(repeats)) - total_morphed
@@ -614,7 +614,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
 
     total_morphed = 0
 
-    for note in notes_final:
+    for note in notes_final_final:
         total_morphed += int(note)
 
     remainder = (pattern_tick*int(repeats)) - total_morphed
@@ -630,7 +630,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
                 index += 1
             if index >= len(notes_final_final):
                 index = 0
-            
+
     format_out = 1
     res_out = 960
 
