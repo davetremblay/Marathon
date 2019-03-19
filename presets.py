@@ -150,6 +150,8 @@ def finalizing(notes_final,total_1,total_2,repeats):
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
     midi.write_midifile(file_out, pat)
+    
+    print("Success! File "+file_out+" created.")
 
 def swing(morph1, morph2, repeats):
     """TODO: Docstring for Swing.
@@ -631,3 +633,5 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
     trackend = midi.EndOfTrackEvent(tick=1)
     tra.append(trackend)
     midi.write_midifile(file_out, pat)
+    
+    print("Success! File "+file_out+" created.")
