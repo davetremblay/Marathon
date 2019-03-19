@@ -128,9 +128,11 @@ def finalizing(notes_final,total_1,total_2,repeats):
 
     tick_rest = 1
 
+    index = 0
+
     for note in notes_final_final:
         tick_morphed = int(note)
-        if str(notes_final.index(note)) == "0":
+        if str(index) == "0":
             noteon = midi.NoteOnEvent(tick=0, channel=0, data=[60, 70])
             tra.append(noteon)
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
@@ -142,6 +144,7 @@ def finalizing(notes_final,total_1,total_2,repeats):
             noteoff = midi.NoteOffEvent(tick=tick_morphed-1, channel=0, data=[60, 0])
             tra.append(noteoff)
             tick_rest = 1
+    index += 1
 
     file_out = "marathon_out"+str(time.strftime('%Y-%m-%d-%Hh%Mm%Ss'))+".mid"
     trackend = midi.EndOfTrackEvent(tick=1)
