@@ -19,6 +19,7 @@ except ImportError:
     import pip
     pip.main(['install','jinja2'])
 import presets
+import sys
 
 def main():
     preset_options = """
@@ -33,13 +34,17 @@ Choose preset
 5: Braff's Quintuplet (5(s) / e 2(s) e s)
 6: Viennese Waltz (3(q) / e. s-q q)
 0: Text Command
+
+q: Quit Program
 """
     print(preset_options)
     preset = input("Enter number: ")
-    while str(preset) not in "0 1 2 3 4 5 6":
+    while str(preset) not in "0 1 2 3 4 5 6 q" and not " ":
         print(preset_options)
         print("Invalid preset. Try again.")
         preset = input("Enter number: ")
+    if str(preset) == "q":
+        raise sys.exit()
     comm1 = ""
     comm2 = ""
     morph1 = ""
@@ -98,10 +103,12 @@ Examples
     """
         print(swing_options)
         swing_preset = input("Enter number: ")
-        while str(swing_preset) not in "1 2 3 4":
+        while str(swing_preset) not in "1 2 3 4 q" and not " ":
             print(swing_options)
             print("Invalid preset. Try again.")
             swing_preset = input("Enter number: ")
+        if str(preset) == "q":
+            raise sys.exit()
         comm1 = ""
         comm2 = ""
         morph1 = ""
@@ -148,6 +155,8 @@ Examples
             while ok == 0:
                 try:
                     morph1_in = input("Enter starting morph value (0-100): ")
+                    if str(morph1_in) == "q":
+                        raise sys.exit()
                     morph1 = float(morph1_in)
                     if morph1 >= 0 and morph1 <= 100:
                         ok += 1
@@ -160,6 +169,8 @@ Examples
             while ok == 0:
                 try:
                     morph2_in = input("Enter ending morph value (0-100): ")
+                    if str(morph2_in) == "q":
+                        raise sys.exit()
                     morph2 = float(morph2_in)
                     if morph2 >= 0 and morph2 <= 100:
                         ok += 1
@@ -172,6 +183,8 @@ Examples
             while ok == 0:
                 try:
                     repeats_in = input("How many repetitions do you want?: ")
+                    if str(repeats_in) == "q":
+                        raise sys.exit()
                     repeats = float(repeats_in)
                     if repeats > 0:
                         ok += 1
@@ -191,6 +204,8 @@ Examples
             while ok == 0:
                 try:
                     morph1_in = input("Enter starting morph value (0-100): ")
+                    if str(morph1_in) == "q":
+                        raise sys.exit()
                     morph1 = float(morph1_in)
                     if morph1 >= 0 and morph1 <= 100:
                         ok += 1
@@ -203,6 +218,8 @@ Examples
             while ok == 0:
                 try:
                     morph2_in = input("Enter ending morph value (0-100): ")
+                    if str(morph2_in) == "q":
+                        raise sys.exit()
                     morph2 = float(morph2_in)
                     if morph2 >= 0 and morph2 <= 100:
                         ok += 1
@@ -215,6 +232,8 @@ Examples
             while ok == 0:
                 try:
                     repeats_in = input("How many repetitions do you want?: ")
+                    if str(repeats_in) == "q":
+                        raise sys.exit()
                     repeats = float(repeats_in)
                     if repeats > 0:
                         ok += 1
@@ -233,6 +252,8 @@ Examples
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -245,6 +266,8 @@ Examples
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -257,6 +280,8 @@ Examples
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1
@@ -272,6 +297,8 @@ Examples
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -284,6 +311,8 @@ Examples
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -296,6 +325,8 @@ Examples
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1
@@ -311,6 +342,8 @@ Examples
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -323,6 +356,8 @@ Examples
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -335,6 +370,8 @@ Examples
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1
@@ -350,6 +387,8 @@ Examples
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -362,6 +401,8 @@ Examples
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -374,6 +415,8 @@ Examples
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1
@@ -389,6 +432,8 @@ Examples
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -401,6 +446,8 @@ Examples
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -413,6 +460,8 @@ Examples
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1
@@ -455,6 +504,8 @@ Separate each note by a space, tied notes with a dash
         while ok == 0:
             try:
                 morph1_in = input("Enter starting morph value (0-100): ")
+                if str(morph1_in) == "q":
+                    raise sys.exit()
                 morph1 = float(morph1_in)
                 if morph1 >= 0 and morph1 <= 100:
                     ok += 1
@@ -466,6 +517,8 @@ Separate each note by a space, tied notes with a dash
         while ok == 0:
             try:
                 morph2_in = input("Enter ending morph value (0-100): ")
+                if str(morph2_in) == "q":
+                    raise sys.exit()
                 morph2 = float(morph2_in)
                 if morph2 >= 0 and morph2 <= 100:
                     ok += 1
@@ -485,6 +538,8 @@ s: sixteenth note =     240 ticks
 t: thirty-second note = 120 ticks
 
 Enter the total tick value of the pattern: """)
+                if str(pattern_tick_in) == "q":
+                    raise sys.exit()
                 pattern_tick = int(pattern_tick_in)
                 if pattern_tick > 0:
                     ok += 1
@@ -496,6 +551,8 @@ Enter the total tick value of the pattern: """)
         while ok == 0:
             try:
                 repeats_in = input("How many repetitions do you want?: ")
+                if str(repeats_in) == "q":
+                    raise sys.exit()
                 repeats = float(repeats_in)
                 if repeats > 0:
                     ok += 1

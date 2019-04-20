@@ -479,7 +479,7 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
         note_list1.append(str(note))
     for note in str(comm2).replace("-", " ").split(" "):
         note_list2.append(str(note))
-
+        
     notes1 = []
     notes2 = []
 
@@ -493,14 +493,13 @@ def text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick):
             Marathon.main()
 
     for note in note_list2:
-        notes2.append(int(note_length[str(note)[0]]))
         try:
             notes2.append(int(note_length[str(note)[0]]))
         except KeyError:
             print("Error: "+str(note)+" is not a valid command.")
             import Marathon
             Marathon.main()
-
+            
     # dots
     pos = 0
     for note in note_list1:
