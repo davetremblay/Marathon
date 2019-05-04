@@ -29,6 +29,8 @@ As of March 6, Marathon Text Command supports shorthand notation for repeated no
 
 You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
 
+As of May 4, Marathon supports morph values outside of the 0-100 range.
+
 ## Installation
 You need to install [python-midi](https://github.com/vishnubob/python-midi) before running Marathon.py.
 
@@ -78,7 +80,7 @@ Enter number:
 Then for starting and ending morph values:
 
 ```console
-Enter starting morph value (0-100)
+Enter starting morph value (%)
 
 Examples
 0:    1:1 Straight Quarter Notes
@@ -89,10 +91,10 @@ Examples
 85.7: 5:2 Septuplet Feel
 100:  3:1 Eighth Feel
 
-Enter starting morph value (0-100):
+Enter starting morph value (%):
 40
 
-Enter ending morph value (0-100)
+Enter ending morph value (%)
 
 Examples
 0:    1:1 Straight Quarter Notes
@@ -103,7 +105,7 @@ Examples
 85.7: 5:2 Septuplet Feel
 100:  3:1 Eighth Feel
 
-Enter ending morph value (0-100):
+Enter ending morph value (%):
 60
 ```
 

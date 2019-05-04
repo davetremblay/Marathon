@@ -154,28 +154,22 @@ Examples
             ok = 0
             while ok == 0:
                 try:
-                    morph1_in = input("Enter starting morph value (0-100): ")
+                    morph1_in = input("Enter starting morph value (%): ")
                     if str(morph1_in) == "q":
                         raise sys.exit()
                     morph1 = float(morph1_in)
-                    if morph1 >= 0 and morph1 <= 100:
-                        ok += 1
-                    else:
-                        print("Invalid value. Must be between 0 and 100.")
+                    ok += 1
                 except ValueError:
                     print(swing_examples_1)
                     print("Invalid value. Try again.")
             ok = 0
             while ok == 0:
                 try:
-                    morph2_in = input("Enter ending morph value (0-100): ")
+                    morph2_in = input("Enter ending morph value (%): ")
                     if str(morph2_in) == "q":
                         raise sys.exit()
                     morph2 = float(morph2_in)
-                    if morph2 >= 0 and morph2 <= 100:
-                        ok += 1
-                    else:
-                        print("Invalid value. Must be between 0 and 100.")
+                    ok += 1
                 except ValueError:
                     print(swing_examples_1)
                     print("Invalid value. Try again.")
@@ -203,28 +197,22 @@ Examples
             ok = 0
             while ok == 0:
                 try:
-                    morph1_in = input("Enter starting morph value (0-100): ")
+                    morph1_in = input("Enter starting morph value (%): ")
                     if str(morph1_in) == "q":
                         raise sys.exit()
                     morph1 = float(morph1_in)
-                    if morph1 >= 0 and morph1 <= 100:
-                        ok += 1
-                    else:
-                        print("Invalid value. Must be between 0 and 100.")
+                    ok += 1
                 except ValueError:
                     print(swing_examples_2)
                     print("Invalid value. Try again.")
             ok = 0
             while ok == 0:
                 try:
-                    morph2_in = input("Enter ending morph value (0-100): ")
+                    morph2_in = input("Enter ending morph value (%): ")
                     if str(morph2_in) == "q":
                         raise sys.exit()
                     morph2 = float(morph2_in)
-                    if morph2 >= 0 and morph2 <= 100:
-                        ok += 1
-                    else:
-                        print("Invalid value. Must be between 0 and 100.")
+                    ok += 1
                 except ValueError:
                     print(swing_examples_2)
                     print("Invalid value. Try again.")
@@ -251,28 +239,22 @@ Examples
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_2)
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_2)
                 print("Invalid value. Try again.")
@@ -296,28 +278,22 @@ Examples
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_3)
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_3)
                 print("Invalid value. Try again.")
@@ -341,28 +317,22 @@ Examples
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_4)
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_4)
                 print("Invalid value. Try again.")
@@ -386,28 +356,22 @@ Examples
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_5)
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_5)
                 print("Invalid value. Try again.")
@@ -431,28 +395,22 @@ Examples
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_6)
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print(morph_examples_6)
                 print("Invalid value. Try again.")
@@ -503,27 +461,21 @@ Separate each note by a space, tied notes with a dash
         ok = 0
         while ok == 0:
             try:
-                morph1_in = input("Enter starting morph value (0-100): ")
+                morph1_in = input("Enter starting morph value (%): ")
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                if morph1 >= 0 and morph1 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print("Invalid value. Try again.")
         ok = 0
         while ok == 0:
             try:
-                morph2_in = input("Enter ending morph value (0-100): ")
+                morph2_in = input("Enter ending morph value (%): ")
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                if morph2 >= 0 and morph2 <= 100:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be between 0 and 100.")
+                ok += 1
             except ValueError:
                 print("Invalid value. Try again.")
         ok = 0
