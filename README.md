@@ -29,7 +29,7 @@ As of March 6, Marathon Text Command supports shorthand notation for repeated no
 
 You can then choose a morph value and a number of repetitions, and then the program will export the completed MIDI track as "marathon_out.mid".
 
-As of May 4, Marathon supports morph values outside of the 0-100 range.
+As of May 4, Marathon supports morph values outside of the 0-100 range. One note of caution, however. This new freedom has limits of its own. If you choose morph values below 0 or above 100, it's possible you have unanticipated results. The problem arises when one or more of the notes in the pattern reaches a value of 0 ticks. This threshold is different for every rhythm pattern, so do your maths before attempting it or risk unexpected results.
 
 ## Installation
 You need to install [python-midi](https://github.com/vishnubob/python-midi) before running Marathon.py.
