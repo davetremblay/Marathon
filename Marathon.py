@@ -35,11 +35,12 @@ Choose preset
 6: Viennese Waltz (3(q) / e. s-q q)
 0: Text Command
 
+m: Morph Range Finder
 q: Quit Program
 """
     print(preset_options)
     preset = input("Enter number: ")
-    while str(preset) not in "0 1 2 3 4 5 6 q" and not " ":
+    while str(preset) not in "0 1 2 3 4 5 6 q m" and not " ":
         print(preset_options)
         print("Invalid preset. Try again.")
         preset = input("Enter number: ")
@@ -149,8 +150,11 @@ Examples
     100:  15:1 Thirty-Seconds Feel
 
    """
-        if swing_preset == "1" or swing_preset == "2":
+        if swing_preset == "1":
             print(swing_examples_1)
+            tlc = -198
+            tuc = 198
+            print("Morph range: "+str(tlc)+" – "+str(tuc))
             ok = 0
             while ok == 0:
                 try:
@@ -158,7 +162,10 @@ Examples
                     if str(morph1_in) == "q":
                         raise sys.exit()
                     morph1 = float(morph1_in)
-                    ok += 1
+                    if morph1 < tlc or morph1 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
                 except ValueError:
                     print(swing_examples_1)
                     print("Invalid value. Try again.")
@@ -169,7 +176,10 @@ Examples
                     if str(morph2_in) == "q":
                         raise sys.exit()
                     morph2 = float(morph2_in)
-                    ok += 1
+                    if morph2 < tlc or morph2 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
                 except ValueError:
                     print(swing_examples_1)
                     print("Invalid value. Try again.")
@@ -187,13 +197,62 @@ Examples
                 except ValueError:
                     print("Invalid value. Try again.")
 
-            if swing_preset == "1":
-                presets.swing(morph1, morph2, repeats)
-            elif swing_preset == "2":
-                presets.half_swing(morph1, morph2, repeats)
+            presets.swing(morph1, morph2, repeats)
+                
+        if swing_preset == "2":
+            print(swing_examples_1)
+            tlc = -197
+            tuc = 197
+            print("Morph range: "+str(tlc)+" – "+str(tuc))
+            ok = 0
+            while ok == 0:
+                try:
+                    morph1_in = input("Enter starting morph value (%): ")
+                    if str(morph1_in) == "q":
+                        raise sys.exit()
+                    morph1 = float(morph1_in)
+                    if morph1 < tlc or morph1 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
+                except ValueError:
+                    print(swing_examples_1)
+                    print("Invalid value. Try again.")
+            ok = 0
+            while ok == 0:
+                try:
+                    morph2_in = input("Enter ending morph value (%): ")
+                    if str(morph2_in) == "q":
+                        raise sys.exit()
+                    morph2 = float(morph2_in)
+                    if morph2 < tlc or morph2 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
+                except ValueError:
+                    print(swing_examples_1)
+                    print("Invalid value. Try again.")
+            ok = 0
+            while ok == 0:
+                try:
+                    repeats_in = input("How many repetitions do you want?: ")
+                    if str(repeats_in) == "q":
+                        raise sys.exit()
+                    repeats = float(repeats_in)
+                    if repeats > 0:
+                        ok += 1
+                    else:
+                        print("Invalid value. Must be greater than 0.")
+                except ValueError:
+                    print("Invalid value. Try again.")
 
-        if swing_preset == "3" or swing_preset == "4":
+            presets.half_swing(morph1, morph2, repeats)
+
+        if swing_preset == "3":
             print(swing_examples_2)
+            tlc = -112
+            tuc = 112
+            print("Morph range: "+str(tlc)+" – "+str(tuc))
             ok = 0
             while ok == 0:
                 try:
@@ -201,7 +260,10 @@ Examples
                     if str(morph1_in) == "q":
                         raise sys.exit()
                     morph1 = float(morph1_in)
-                    ok += 1
+                    if morph1 < tlc or morph1 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
                 except ValueError:
                     print(swing_examples_2)
                     print("Invalid value. Try again.")
@@ -212,7 +274,10 @@ Examples
                     if str(morph2_in) == "q":
                         raise sys.exit()
                     morph2 = float(morph2_in)
-                    ok += 1
+                    if morph2 < tlc or morph2 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
                 except ValueError:
                     print(swing_examples_2)
                     print("Invalid value. Try again.")
@@ -229,13 +294,63 @@ Examples
                         print("Invalid value. Must be greater than 0.")
                 except ValueError:
                     print("Invalid value. Try again.")
-            if swing_preset == "3":
-                presets.hard_swing(morph1, morph2, repeats)
-            elif swing_preset == "4":
-                presets.half_hard_swing(morph1, morph2, repeats)
+
+            presets.hard_swing(morph1, morph2, repeats)
+                
+        if swing_preset == "4":
+            print(swing_examples_2)
+            tlc = -111
+            tuc = 111
+            print("Morph range: "+str(tlc)+" – "+str(tuc))
+            ok = 0
+            while ok == 0:
+                try:
+                    morph1_in = input("Enter starting morph value (%): ")
+                    if str(morph1_in) == "q":
+                        raise sys.exit()
+                    morph1 = float(morph1_in)
+                    if morph1 < tlc or morph1 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
+                except ValueError:
+                    print(swing_examples_2)
+                    print("Invalid value. Try again.")
+            ok = 0
+            while ok == 0:
+                try:
+                    morph2_in = input("Enter ending morph value (%): ")
+                    if str(morph2_in) == "q":
+                        raise sys.exit()
+                    morph2 = float(morph2_in)
+                    if morph2 < tlc or morph2 > tuc:
+                        print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                    else:
+                        ok += 1
+                except ValueError:
+                    print(swing_examples_2)
+                    print("Invalid value. Try again.")
+            ok = 0
+            while ok == 0:
+                try:
+                    repeats_in = input("How many repetitions do you want?: ")
+                    if str(repeats_in) == "q":
+                        raise sys.exit()
+                    repeats = float(repeats_in)
+                    if repeats > 0:
+                        ok += 1
+                    else:
+                        print("Invalid value. Must be greater than 0.")
+                except ValueError:
+                    print("Invalid value. Try again.")
+
+            presets.half_hard_swing(morph1, morph2, repeats)
 
     elif preset == "2":
         print(morph_examples_2)
+        tlc = -197
+        tuc = 397
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
         ok = 0
         while ok == 0:
             try:
@@ -243,7 +358,10 @@ Examples
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                ok += 1
+                if morph1 < tlc or morph1 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_2)
                 print("Invalid value. Try again.")
@@ -254,7 +372,10 @@ Examples
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                ok += 1
+                if morph2 < tlc or morph2 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_2)
                 print("Invalid value. Try again.")
@@ -275,6 +396,9 @@ Examples
 
     elif preset == "3":
         print(morph_examples_3)
+        tlc = -497
+        tuc = 247
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
         ok = 0
         while ok == 0:
             try:
@@ -282,7 +406,10 @@ Examples
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                ok += 1
+                if morph1 < tlc or morph1 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_3)
                 print("Invalid value. Try again.")
@@ -293,7 +420,10 @@ Examples
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                ok += 1
+                if morph2 < tlc or morph2 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_3)
                 print("Invalid value. Try again.")
@@ -314,6 +444,9 @@ Examples
 
     elif preset == "4":
         print(morph_examples_4)
+        tlc = -296
+        tuc = 296
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
         ok = 0
         while ok == 0:
             try:
@@ -321,7 +454,10 @@ Examples
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                ok += 1
+                if morph1 < tlc or morph1 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_4)
                 print("Invalid value. Try again.")
@@ -332,7 +468,10 @@ Examples
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                ok += 1
+                if morph2 < tlc or morph2 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_4)
                 print("Invalid value. Try again.")
@@ -353,6 +492,9 @@ Examples
 
     elif preset == "5":
         print(morph_examples_5)
+        tlc = -226
+        tuc = 344
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
         ok = 0
         while ok == 0:
             try:
@@ -360,7 +502,10 @@ Examples
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                ok += 1
+                if morph1 < tlc or morph1 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_5)
                 print("Invalid value. Try again.")
@@ -371,7 +516,10 @@ Examples
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                ok += 1
+                if morph2 < tlc or morph2 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_5)
                 print("Invalid value. Try again.")
@@ -392,6 +540,9 @@ Examples
 
     elif preset == "6":
         print(morph_examples_6)
+        tlc = -397
+        tuc = 397
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
         ok = 0
         while ok == 0:
             try:
@@ -399,7 +550,10 @@ Examples
                 if str(morph1_in) == "q":
                     raise sys.exit()
                 morph1 = float(morph1_in)
-                ok += 1
+                if morph1 < tlc or morph1 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_6)
                 print("Invalid value. Try again.")
@@ -410,7 +564,10 @@ Examples
                 if str(morph2_in) == "q":
                     raise sys.exit()
                 morph2 = float(morph2_in)
-                ok += 1
+                if morph2 < tlc or morph2 > tuc:
+                    print("Value outside of morph range ("+str(tlc)+" to "+str(tuc)+")")
+                else:
+                    ok += 1
             except ValueError:
                 print(morph_examples_6)
                 print("Invalid value. Try again.")
@@ -513,7 +670,79 @@ Enter the total tick value of the pattern: """)
             except ValueError:
                 print("Invalid value. Try again.")
         presets.text_command(morph1, morph2, repeats, comm1, comm2, pattern_tick)
-
+        
+    elif preset == "m":
+        ok = 0
+        while ok == 0:
+            try:
+                n = int(input("Enter number of notes in your rhythm: "))
+                if str(n) == "q":
+                    raise sys.exit()
+                if n > 0:
+                    ok += 1
+                else:
+                    print("Invalid value. Must be greater than 0.")
+            except ValueError:
+                print("Invalid value. Try again.")
+        ok = 0
+        while ok == 0:
+            try:
+                ll0 = int(input("Enter tick value of longest phrased note at morph 0: "))
+                if str(ll0) == "q":
+                    raise sys.exit()
+                if ll0 > 0:
+                    ok += 1
+                else:
+                    print("Invalid value. Must be greater than 0.")
+            except ValueError:
+                print("Invalid value. Try again.")
+        ok = 0
+        while ok == 0:
+            try:
+                ll100 = int(input("Enter tick value of longest phrased note at morph 100: "))
+                if str(ll100) == "q":
+                    raise sys.exit()
+                if ll100 > 0:
+                    ok += 1
+                else:
+                    print("Invalid value. Must be greater than 0.")
+            except ValueError:
+                print("Invalid value. Try again.")
+        ok = 0
+        while ok == 0:
+            try:
+                ls0 = int(input("Enter tick value of shortest phrased note at morph 0: "))
+                if str(ls0) == "q":
+                    raise sys.exit()
+                if ls0 > 0:
+                    ok += 1
+                else:
+                    print("Invalid value. Must be greater than 0.")
+            except ValueError:
+                print("Invalid value. Try again.")
+        ok = 0
+        while ok == 0:
+            try:
+                ls100 = int(input("Enter tick value of shortest phrased note at morph 100: "))
+                if str(ls100) == "q":
+                    raise sys.exit()
+                if ls100 > 0:
+                    ok += 1
+                else:
+                    print("Invalid value. Must be greater than 0.")
+            except ValueError:
+                print("Invalid value. Try again.")
+        
+        sl = (ll100 - ll0) / 100
+        ss = (ls100 - ls0) / 100
+        
+        tl = ll0 / sl * -1
+        tu = ls0 / ss * -1
+        
+        tlc = tl + n
+        tuc = tu - n
+        
+        print("Morph range: "+str(tlc)+" – "+str(tuc))
 
 # Execute the main program if this file is not being imported as a module
 while __name__ == "__main__":

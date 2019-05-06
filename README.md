@@ -56,6 +56,9 @@ Choose preset
 6: Viennese Waltz (3(q) / e. s-q q)
 0: Text Command
 
+m: Morph Range Finder
+q: Quit Program
+
 Enter number:
 1
 ```
@@ -91,6 +94,8 @@ Examples
 85.7: 5:2 Septuplet Feel
 100:  3:1 Eighth Feel
 
+Morph range: -198 – 198
+
 Enter starting morph value (%):
 40
 
@@ -104,6 +109,8 @@ Examples
 66.7: 2:1 Triplet Feel
 85.7: 5:2 Septuplet Feel
 100:  3:1 Eighth Feel
+
+Morph range: -198 – 198
 
 Enter ending morph value (%):
 60
@@ -120,6 +127,24 @@ You will then find the file `marathon_out.mid` in the same directory, which you 
 
 
 ## Using Text Command
+Before using Text Command, you can try Morph Range Finder ("m") to find the workable morph range of your command.
+
+Select preset "m". The program will ask you a few things.
+
+```console
+Enter number of notes in your rhythm:
+
+Enter tick value of longest phrased note at morph 0:
+
+Enter tick value of longest phrased note at morph 100:
+
+Enter tick value of shortest phrased note at morph 0:
+
+Enter tick value of shortest phrased note at morph 100:
+```
+
+First of all, the number of notes in your rhythm is pretty self-explanatory, but I feel I have to clarify the other inputs. You need to find the longest and shortest notes in your phrased rhythm. If your two rhythms are phrased, then choose the longest and smallest in either of them, but they both need to be from the same one. Moreover, the two values, at morph 0 and 100, should be different. If the note doesn't change with morphing, choose a different one. The program will then calculate the workable morph range of your rhythm, which you can then fully explore with Text Command.
+
 Select preset "0" for Text Command and you will see the vocabulary:
 
 ```console
