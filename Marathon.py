@@ -678,14 +678,15 @@ Enter the total tick value of the pattern: """)
                 n = int(input("Enter number of notes in your rhythm: "))
                 if str(n) == "q":
                     raise sys.exit()
-                if n > 0:
+                if n > 1:
                     ok += 1
                 else:
-                    print("Invalid value. Must be greater than 0.")
+                    print("Invalid value. Must be greater than 1.")
             except ValueError:
                 print("Invalid value. Try again.")
         ok = 0
-        while ok == 0:
+        same_note = 0
+        while ok == 0 and same_note == 0:
             try:
                 ll0 = int(input("Enter tick value of longest phrased note at morph 0: "))
                 if str(ll0) == "q":
@@ -696,20 +697,25 @@ Enter the total tick value of the pattern: """)
                     print("Invalid value. Must be greater than 0.")
             except ValueError:
                 print("Invalid value. Try again.")
-        ok = 0
-        while ok == 0:
-            try:
-                ll100 = int(input("Enter tick value of longest phrased note at morph 100: "))
-                if str(ll100) == "q":
-                    raise sys.exit()
-                if ll100 > 0:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be greater than 0.")
-            except ValueError:
-                print("Invalid value. Try again.")
-        ok = 0
-        while ok == 0:
+            ok = 0
+            while ok == 0:
+                try:
+                    ll100 = int(input("Enter tick value of longest phrased note at morph 100: "))
+                    if str(ll100) == "q":
+                        raise sys.exit()
+                    if ll100 > 0 and ll100 != ll0:
+                        ok += 1
+                        same_note += 1
+                    elif ll100 == ll0:
+                        print("Note unchanged. Choose another note.")
+                        ok += 1
+                    else:
+                        print("Invalid value. Must be greater than 0.")
+                except ValueError:
+                    print("Invalid value. Try again.")
+            ok = 0
+        same_note = 0
+        while ok == 0 and same_note == 0:
             try:
                 ls0 = int(input("Enter tick value of shortest phrased note at morph 0: "))
                 if str(ls0) == "q":
@@ -720,18 +726,23 @@ Enter the total tick value of the pattern: """)
                     print("Invalid value. Must be greater than 0.")
             except ValueError:
                 print("Invalid value. Try again.")
-        ok = 0
-        while ok == 0:
-            try:
-                ls100 = int(input("Enter tick value of shortest phrased note at morph 100: "))
-                if str(ls100) == "q":
-                    raise sys.exit()
-                if ls100 > 0:
-                    ok += 1
-                else:
-                    print("Invalid value. Must be greater than 0.")
-            except ValueError:
-                print("Invalid value. Try again.")
+            ok = 0
+            while ok == 0:
+                try:
+                    ls100 = int(input("Enter tick value of shortest phrased note at morph 100: "))
+                    if str(ls100) == "q":
+                        raise sys.exit()
+                    if ls100 > 0 and ls100 != ls0:
+                        ok += 1
+                        same_note += 1
+                    elif ls100 == ls0:
+                        print("Note unchanged. Choose another note.")
+                        ok += 1
+                    else:
+                        print("Invalid value. Must be greater than 0.")
+                except ValueError:
+                    print("Invalid value. Try again.")
+            ok = 0
         
         sl = (ll100 - ll0) / 100
         ss = (ls100 - ls0) / 100

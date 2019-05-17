@@ -58,8 +58,8 @@ def rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick):
 
     correction = 0
 
-    weight_start = float(morph1)
-    weight_end = float(morph2)
+    weight_start = float(morph1 / 100)
+    weight_end = float(morph2 / 100)
 
     currenttick = 0
 
@@ -72,27 +72,21 @@ def rounding_correction(notes1,notes2,morph1,morph2,repeats,totaltick):
             tick2 = int(notes2[e])
 
             progress = currenttick / totaltick
+                        
+            correction += abs(tick1 + ((1 - progress) * (tick2 - tick1) * weight_start) + (progress * (tick2 - tick1) * weight_end)) - abs(float(int(tick1 + ((1 - progress) * (tick2 - tick1) * weight_start) + (progress * (tick2 - tick1) * weight_end))))
 
-            if weight_start != weight_end:
-                weight_1 = (1 - progress) * (weight_end/100) + progress * (weight_start/100)
-                weight_2 = progress * (weight_end/100) + (1 - progress) * (weight_start/100)
-            else:
-                weight_1 = 1-float(float(morph1)/100)
-                weight_2 = float(float(morph1)/100)
-
-            # rounding correction
-            correction += (weight_1 * tick1) + (weight_2 * tick2) - float(int((weight_1 * tick1) + (weight_2 * tick2)))
             if correction % 1 >= 0.5:
-                tick_morphed = int((weight_1 * tick1) + (weight_2 * tick2)) + int(correction) + 1
-                correction = 0
+                tick_morphed = tick1 + ((1 - progress) * (tick2 - tick1) * weight_start) + (progress * (tick2 - tick1) * weight_end) + int(correction) + 1
+                correction = correction - int(correction)
+
             else:
-                tick_morphed = int((weight_1 * tick1) + (weight_2 * tick2)) + int(correction)
-                correction = 0
-
+                tick_morphed = tick1 + ((1 - progress) * (tick2 - tick1) * weight_start) + (progress * (tick2 - tick1) * weight_end) + int(correction)
+                correction = correction - int(correction)
+                                                                
             notes_final.append(int(tick_morphed))
-
+            
             currenttick += tick_morphed
-
+            
             e += 1
 
     return notes_final
